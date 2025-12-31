@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@400;600&family=Playfair+Display:wght@400;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-midnight: #1B263B;
+  --color-midnight-deep: #0C354D;
+  --color-teal: #249794;
+  --color-teal-strong: #0DA797;
+  --color-teal-muted: #7FBAB4;
+  --color-sand: #C5A059;
+  --color-sand-light: #F9DEB2;
+  --color-sand-gold: #9E7F5E;
+  --color-white: #FFFFFF;
+  --color-off-white: #FEFDFB;
+
+  --font-playfair: 'Playfair Display', serif;
+  --font-montserrat: Montserrat, sans-serif;
+  --font-inter: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-body: var(--font-inter);
+
+  /* Standard theme variable aliases (Tailwind v4 expects these namespaces) */
+  --background: var(--color-off-white);
+  --foreground: var(--color-midnight);
+  --card: var(--color-white);
+  --card-foreground: var(--color-midnight);
+  --popover: var(--color-white);
+  --popover-foreground: var(--color-midnight);
+  --primary: var(--color-teal);
+  --primary-foreground: var(--color-white);
+  --secondary: var(--color-teal-strong);
+  --secondary-foreground: var(--color-white);
+  --muted: var(--color-teal-muted);
+  --muted-foreground: var(--color-midnight);
+  --accent: var(--color-sand-gold);
+  --accent-foreground: var(--color-midnight);
+  --destructive: #d9534f;
+  --border: var(--color-sand-gold);
+  --input: var(--color-white);
+  --ring: var(--color-teal);
+  --radius: 0.625rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  html, body, #app {
+    height: 100%;
+  }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2 {
+    font-family: var(--font-playfair);
+  }
+
+  /* Brand utility tweaks */
+  .brand-midnight { color: var(--color-midnight); }
+  .brand-teal { color: var(--color-teal); }
+  .brand-sand { color: var(--color-sand); }
+
+  /* Ensure hero images cover */
+  section.relative img.object-cover { object-fit: cover; }
+}
