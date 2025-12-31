@@ -1,73 +1,178 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@400;600&family=Playfair+Display:wght@400;700&display=swap');
 
+/* This is Tailwind 4 CSS file */
+/* Extending Tailwind configuration */
+/* Use shadcn/ui format to extend the configuration */
+/* Add only the styles that your component needs */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* Base imports */
 @import "tailwindcss";
+@import "tw-animate-css";
 
-@theme {
-  --color-midnight: #1B263B;
-  --color-midnight-deep: #0C354D;
-  --color-teal: #249794;
-  --color-teal-strong: #0DA797;
-  --color-teal-muted: #7FBAB4;
-  --color-sand: #C5A059;
-  --color-sand-light: #F9DEB2;
-  --color-sand-gold: #9E7F5E;
-  --color-white: #FFFFFF;
-  --color-off-white: #FEFDFB;
+/* Custom dark variant for targeting dark mode elements */
+@custom-variant dark (&:is(.dark *));
 
-  --font-playfair: 'Playfair Display', serif;
-  --font-montserrat: Montserrat, sans-serif;
-  --font-inter: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  --font-body: var(--font-inter);
+/* Font utility classes for Tailwind safelist */
+.font-playfair {
+  font-family: 'Playfair Display', serif !important;
+}
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif !important;
+}
+.font-inter {
+  font-family: 'Inter', sans-serif !important;
+}
 
-  /* Standard theme variable aliases (Tailwind v4 expects these namespaces) */
-  --background: var(--color-off-white);
-  --foreground: var(--color-midnight);
-  --card: var(--color-white);
-  --card-foreground: var(--color-midnight);
-  --popover: var(--color-white);
-  --popover-foreground: var(--color-midnight);
-  --primary: var(--color-teal);
-  --primary-foreground: var(--color-white);
-  --secondary: var(--color-teal-strong);
-  --secondary-foreground: var(--color-white);
-  --muted: var(--color-teal-muted);
-  --muted-foreground: var(--color-midnight);
-  --accent: var(--color-sand-gold);
-  --accent-foreground: var(--color-midnight);
-  --destructive: #d9534f;
-  --border: var(--color-sand-gold);
-  --input: var(--color-white);
-  --ring: var(--color-teal);
-  --radius: 0.625rem;
+/* CSS variables and theme definitions */
+@theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Light theme variables */
+:root {
+  --radius: 0.625rem;
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* Brand colors - Editorial Luxury Palette */
+  --midnight-blue: #0C354D;
+  --midnight-blue-tint: #F0F4F6;
+  --teal: #0DA797;
+  --teal-light: #7FBAB4;
+  --sand-gold: #9E7F5E;
+  --sand-gold-light: #F9DEB2;
+  --off-white: #FEFDFB;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+}
+
+/* Dark theme variables */
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
 }
 
 @layer base {
-  html, body, #app {
-    height: 100%;
-  }
-
   * {
     @apply border-border outline-ring/50;
   }
-
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-body);
+    font-family: 'Inter', sans-serif;
   }
 
-  h1, h2 {
-    font-family: var(--font-playfair);
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
   }
+}
 
-  /* Brand utility tweaks */
-  .brand-midnight { color: var(--color-midnight); }
-  .brand-teal { color: var(--color-teal); }
-  .brand-sand { color: var(--color-sand); }
-
-  /* Ensure hero images cover */
-  section.relative img.object-cover { object-fit: cover; }
+@layer utilities {
+  .bg-card { background-color: var(--card); }
+  .text-card-foreground { color: var(--card-foreground); }
+  .bg-primary { background-color: var(--primary); }
+  .text-primary-foreground { color: var(--primary-foreground); }
+  .bg-secondary { background-color: var(--secondary); }
+  .text-secondary-foreground { color: var(--secondary-foreground); }
+  .bg-muted { background-color: var(--muted); }
+  .text-muted-foreground { color: var(--muted-foreground); }
+  .bg-accent { background-color: var(--accent); }
+  .text-accent-foreground { color: var(--accent-foreground); }
+  .bg-destructive { background-color: var(--destructive); }
+  .text-destructive { color: var(--destructive); }
+  .border-border { border-color: var(--border); }
+  .bg-input { background-color: var(--input); }
+  .text-input { color: var(--input); }
+  .ring-ring { --tw-ring-color: var(--ring); }
 }
