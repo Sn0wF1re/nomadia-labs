@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v'
+// Add new sections
+// No need to import AboutSection and ContactSection due to Nuxt auto-import
 </script>
 <template>
   <div class="w-full min-h-screen bg-[#FEFDFB]">
@@ -48,5 +50,9 @@ import { Motion } from 'motion-v'
         </div>
       </div>
     </section>
+    <!-- About Section -->
+    <AboutSection />
+    <!-- Contact Section -->
+    <ContactSection />
   </div>
 </template>
