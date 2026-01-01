@@ -11,7 +11,10 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
+
+const year = new Date().getFullYear()
 </script>
+
 <template>
   <div>
     <!-- Navigation -->
@@ -66,7 +69,7 @@ onUnmounted(() => {
           </div>
         </div>
         <div class="border-t border-sand-gold/30 pt-8 text-center text-sm text-white/60 font-inter">
-          © 2024 Nomadia. All rights reserved.
+          © {{ year }} Nomadia. All rights reserved.
         </div>
       </div>
     </footer>
