@@ -32,7 +32,7 @@ import { Motion } from 'motion-v'
 
     <!-- Advisory Tiers Section -->
     <section id="tiers" class="py-24 px-6 bg-off-white relative">
-      <div class="w-24 h-0.5 bg-sand-gold mx-auto mb-15" />
+      <div class="absolute top-15 left-1/2 -translate-x-1/2 w-24 h-0.5 bg-sand-gold" />
       <div class="max-w-7xl mx-auto">
         <Motion as="h2"
           class="text-4xl md:text-5xl font-semibold text-center mb-16 text-midnight-blue font-playfair"
