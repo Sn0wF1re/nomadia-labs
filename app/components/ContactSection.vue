@@ -3,7 +3,7 @@ import { Motion } from 'motion-v'
 </script>
 <template>
   <section id="contact" class="py-24 px-6 bg-[#FEFDFB] relative">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-0.5 bg-[#9E7F5E]" />
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-0.5 bg-[#C5A059]" />
     <div class="max-w-2xl mx-auto">
       <Motion as="h2"
         class="text-4xl md:text-5xl font-semibold text-center mb-12 text-[#0C354D] font-playfair"

@@ -9,7 +9,7 @@ import { Motion } from 'motion-v';
     :transition="{ duration: 0.6, delay: 0.3 }"
     class="h-full"
   >
-    <Card class="h-full rounded-sm shadow-xl border-[#9E7F5E] border-2 bg-white flex flex-col">
+    <Card class="h-full rounded-sm shadow-xl border-[#C5A059] border-2 bg-white flex flex-col">
       <CardHeader class="bg-[#0C354D] p-8">
         <CardTitle class="text-2xl font-bold text-white font-montserrat">
           TIER 3
@@ -27,8 +27,8 @@ import { Motion } from 'motion-v';
             Comprehensive partnership throughout your decision journey with continuous guidance, emotional support, and expert advice.
           </p>
         </div>
-        <div class="bg-[#9E7F5E]/15 p-6 rounded-sm mt-4 border-2 border-[#9E7F5E]">
-          <p class="text-xs uppercase tracking-wider font-bold mb-3 text-[#9E7F5E] font-montserrat">
+        <div class="bg-[#C5A059]/15 p-6 rounded-sm mt-4 border-2 border-[#C5A059]">
+          <p class="text-xs uppercase tracking-wider font-bold mb-3 text-[#C5A059] font-montserrat">
             OUTCOME
           </p>
           <p class="text-sm text-[#0C354D] font-semibold leading-relaxed font-inter">

@@ -65,7 +65,7 @@ onUnmounted(() => {
             <p class="text-sm text-white/70 font-inter">hello@nomadia.com</p>
           </div>
         </div>
-        <div class="border-t border-[#9E7F5E]/30 pt-8 text-center text-sm text-white/60 font-inter">
+        <div class="border-t border-[#C5A059]/30 pt-8 text-center text-sm text-white/60 font-inter">
           © 2024 Nomadia. All rights reserved.
         </div>
       </div>

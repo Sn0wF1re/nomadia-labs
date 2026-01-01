@@ -27,8 +27,8 @@ import { Motion } from 'motion-v';
             Deep-dive analysis with comprehensive research, data, and expert recommendations tailored to your situation.
           </p>
         </div>
-        <div class="bg-[#9E7F5E]/15 p-5 rounded-sm mt-4 border-2 border-[#9E7F5E]">
-          <p class="text-xs uppercase tracking-wider font-bold mb-2 text-[#9E7F5E] font-montserrat">
+        <div class="bg-[#C5A059]/15 p-5 rounded-sm mt-4 border-2 border-[#C5A059]">
+          <p class="text-xs uppercase tracking-wider font-bold mb-2 text-[#C5A059] font-montserrat">
             OUTCOME
           </p>
           <p class="text-sm text-[#0C354D] font-semibold font-inter">
