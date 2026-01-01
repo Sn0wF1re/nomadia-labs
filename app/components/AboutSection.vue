@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v'
-const team = [
-  { name: 'Sarah Mitchell', role: 'Founder & Lead Advisor', bio: '15+ years experience in strategic consulting and life coaching' },
-  { name: 'David Chen', role: 'Senior Advisor', bio: 'Expert in career transitions and professional development' },
-  { name: 'Emma Rodriguez', role: 'Research Specialist', bio: 'Data-driven insights for informed decision making' }
-]
+import { Globe } from 'lucide-vue-next'
 </script>
 <template>
   <section id="about" class="py-24 px-6 bg-[#FEFDFB] relative">
@@ -53,14 +49,15 @@ const team = [
         :in-view-options="{ once: true }"
         :transition="{ duration: 0.6 }"
       >
-        <h3 class="text-3xl font-semibold mb-8 text-center text-[#0C354D] font-playfair">Our Team</h3>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div v-for="member in team" :key="member.name" class="text-center">
-            <div class="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-[#F9DEB2]/40 to-[#7FBAB4]/40 rounded-full" />
-            <h4 class="text-xl font-semibold mb-2 text-[#0C354D] font-playfair">{{ member.name }}</h4>
-            <p class="text-sm uppercase tracking-wider text-[#9E7F5E] font-bold mb-3 font-montserrat">{{ member.role }}</p>
-            <p class="text-sm text-gray-700 font-medium font-inter">{{ member.bio }}</p>
-          </div>
+        <div class="flex flex-col items-center mb-8">
+          <Globe class="w-10 h-10 text-[#0C354D] mb-2" />
+          <h3 class="text-3xl font-semibold text-center text-[#0C354D] font-playfair">Our Global Perspective</h3>
+        </div>
+        <div class="bg-[#F9DEB2]/20 p-8 rounded-sm border border-[#9E7F5E]/30 max-w-3xl mx-auto">
+          <p class="text-gray-800 leading-relaxed font-medium font-inter text-center">
+            At Nomadia, our advisors bring a wealth of first-hand experience from living and working across the globe - including Finland, the UK, China, and Germany. Our team understands the challenges and opportunities of moving abroad, navigating new cultures, and building a life in unfamiliar places.<br><br>
+            Whether you’re seeking guidance on immigration, adapting to a new environment, or making important decisions about your future, we offer advice rooted in diverse backgrounds and real-world journeys. We’re here to help you thrive - wherever you choose to call home.
+          </p>
         </div>
       </Motion>
     </div>
