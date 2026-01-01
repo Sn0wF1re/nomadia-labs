@@ -4,7 +4,7 @@ import { Motion } from 'motion-v'
 // No need to import AboutSection and ContactSection due to Nuxt auto-import
 </script>
 <template>
-  <div class="w-full min-h-screen bg-[#FEFDFB]">
+  <div class="w-full min-h-screen bg-off-white">
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div class="absolute inset-0 z-0">
@@ -31,11 +31,11 @@ import { Motion } from 'motion-v'
     </section>
 
     <!-- Advisory Tiers Section -->
-    <section id="tiers" class="py-24 px-6 bg-[#FEFDFB] relative">
-      <div class="w-24 h-0.5 bg-[#C5A059] mx-auto mb-15" />
+    <section id="tiers" class="py-24 px-6 bg-off-white relative">
+      <div class="w-24 h-0.5 bg-sand-gold mx-auto mb-15" />
       <div class="max-w-7xl mx-auto">
         <Motion as="h2"
-          class="text-4xl md:text-5xl font-semibold text-center mb-16 text-[#0C354D] font-playfair"
+          class="text-4xl md:text-5xl font-semibold text-center mb-16 text-midnight-blue font-playfair"
           :initial="{ opacity: 0, y: 20 }"
           :in-view="{ opacity: 1, y: 0 }"
           :in-view-options="{ once: true }"

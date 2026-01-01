@@ -10,32 +10,32 @@ import { Motion } from 'motion-v';
     class="h-full"
   >
     <Card class="h-full rounded-sm shadow-lg border-0 bg-white flex flex-col">
-      <CardHeader class="bg-[#7FBAB4]/30 p-6">
-        <CardTitle class="text-2xl font-bold text-[#0C354D] font-montserrat">
+      <CardHeader class="bg-teal-light/30 p-6">
+        <CardTitle class="text-2xl font-bold text-midnight-blue font-montserrat">
           TIER 1
         </CardTitle>
-        <p class="text-xl font-light mt-2 text-[#0C354D] font-playfair">
+        <p class="text-xl font-light mt-2 text-midnight-blue font-playfair">
           Clarity Call
         </p>
       </CardHeader>
       <CardContent class="p-6 bg-white flex-1 flex flex-col justify-between">
         <div class="mb-6">
           <p class="text-sm text-gray-700 mb-4 font-medium font-inter">
-            <strong class="text-[#0C354D]">Best for:</strong> Someone who doesn't know where to start
+            <strong class="text-midnight-blue">Best for:</strong> Someone who doesn't know where to start
           </p>
           <p class="text-sm text-gray-700 leading-relaxed font-inter">
             A focused 60-minute consultation to identify your key priorities and create a roadmap forward.
           </p>
         </div>
-        <div class="bg-[#C5A059]/15 p-5 rounded-sm mt-4 border-2 border-[#C5A059]">
-          <p class="text-xs uppercase tracking-wider font-bold mb-2 text-[#C5A059] font-montserrat">
+        <div class="bg-sand-gold/15 p-5 rounded-sm mt-4 border-2 border-sand-gold">
+          <p class="text-xs uppercase tracking-wider font-bold mb-2 text-sand-gold font-montserrat">
             OUTCOME
           </p>
-          <p class="text-sm text-[#0C354D] font-semibold font-inter">
+          <p class="text-sm text-midnight-blue font-semibold font-inter">
             Clear next steps and a personalized action plan
           </p>
         </div>
-        <Button class="w-full mt-6 bg-[#0DA797] hover:bg-[#0C354D] text-white transition-all duration-300 rounded-sm font-montserrat">
+        <Button class="w-full mt-6 bg-teal hover:bg-midnight-blue text-white transition-all duration-300 rounded-sm font-montserrat">
           START YOUR JOURNEY
         </Button>
       </CardContent>
