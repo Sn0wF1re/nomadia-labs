@@ -33,7 +33,7 @@ import { Motion } from 'motion-v'
           <label for="message" class="text-xs uppercase tracking-wider font-montserrat">Message</label>
           <textarea id="message" rows="5" class="mt-2 w-full rounded-sm border border-input bg-transparent px-3 py-2 text-base shadow-xs transition-colors focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] outline-none font-inter" />
         </div>
-        <button type="submit" class="w-full bg-[#0DA797] hover:bg-[#0C354D] text-white transition-all duration-300 rounded-sm font-montserrat">SEND MESSAGE</button>
+        <Button type="submit" class="w-full bg-[#0DA797] hover:bg-[#0C354D] text-white transition-all duration-300 rounded-sm font-montserrat">SEND MESSAGE</Button>
       </Motion>
     </div>
   </section>
