@@ -1,5 +1,10 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { Motion } from 'motion-v';
+
+const showModal = ref(false)
+function openModal() { showModal.value = true }
+function closeModal() { showModal.value = false }
 </script>
 <template>
   <Motion as="div"
@@ -35,9 +40,10 @@ import { Motion } from 'motion-v';
             Shortlist, data, and personalized action direction
           </p>
         </div>
-        <Button class="w-full mt-6 bg-teal hover:bg-midnight-blue text-white transition-all duration-300 rounded-sm font-montserrat">
+        <Button class="w-full mt-6 bg-teal hover:bg-midnight-blue text-white transition-all duration-300 rounded-sm font-montserrat" @click="openModal">
           START YOUR JOURNEY
         </Button>
+        <PaymentModal :open="showModal" :tier="2" :amount="7500" :onClose="closeModal" />
       </CardContent>
     </Card>
   </Motion>

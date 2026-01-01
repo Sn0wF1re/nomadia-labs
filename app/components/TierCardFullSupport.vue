@@ -1,5 +1,10 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { Motion } from 'motion-v';
+
+const showModal = ref(false)
+function openModal() { showModal.value = true }
+function closeModal() { showModal.value = false }
 </script>
 <template>
   <Motion as="div"
@@ -35,9 +40,10 @@ import { Motion } from 'motion-v';
             Emotional guidance through the decision process with complete support from start to finish
           </p>
         </div>
-        <Button class="w-full mt-8 bg-teal hover:bg-midnight-blue text-white transition-all duration-300 h-12 rounded-sm font-montserrat">
+        <Button class="w-full mt-8 bg-teal hover:bg-midnight-blue text-white transition-all duration-300 h-12 rounded-sm font-montserrat" @click="openModal">
           START YOUR JOURNEY
         </Button>
+        <InquiryModal :open="showModal" :onClose="closeModal" />
       </CardContent>
     </Card>
   </Motion>
