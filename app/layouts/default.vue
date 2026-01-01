@@ -34,9 +34,9 @@ onUnmounted(() => {
         </div>
       </div>
     </Motion>
-    <div class="pt-[80px]">
-      <slot />
-    </div>
+
+    <slot />
+    
     <!-- Footer -->
     <footer class="bg-[#0C354D] text-white py-12 px-6">
       <div class="max-w-7xl mx-auto">
