@@ -21,9 +21,7 @@ const year = new Date().getFullYear()
     <Motion as=nav
       class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       :class="
-        $route.name === 'index'
-          ? (scrolled ? 'bg-off-white/90 backdrop-blur-md shadow-sm' : 'bg-white/10 backdrop-blur-sm')
-          : 'bg-off-white/95 shadow-sm backdrop-blur-md'
+        scrolled ? 'bg-off-white/90 backdrop-blur-md shadow-sm' : 'bg-white/10 backdrop-blur-sm'
       "
       :initial="{ y: -100 }"
       :animate="{ y: 0 }"
