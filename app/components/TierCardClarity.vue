@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Motion } from 'motion-v';
-
-const showModal = ref(false)
-function openModal() { showModal.value = true }
-function closeModal() { showModal.value = false }
+const props = defineProps<{ disabled?: boolean }>()
+const emit = defineEmits(['start'])
 </script>
 <template>
   <Motion as="div"
@@ -40,10 +37,9 @@ function closeModal() { showModal.value = false }
             Clear next steps and a personalized action plan
           </p>
         </div>
-        <Button class="w-full mt-6 bg-teal hover:bg-midnight-blue text-white transition-all duration-300 rounded-sm font-montserrat" @click="openModal">
+        <Button class="w-full mt-6 bg-teal hover:bg-midnight-blue text-white transition-all duration-300 rounded-sm font-montserrat" :disabled="props.disabled" @click="$emit('start')">
           START YOUR JOURNEY
         </Button>
-        <PaymentModal :open="showModal" :tier="1" :amount="3000" :onClose="closeModal" />
       </CardContent>
     </Card>
   </Motion>

@@ -1,8 +1,32 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { Motion } from 'motion-v'
-// Add new sections
-// No need to import AboutSection and ContactSection due to Nuxt auto-import
+
+// Shared data state
+const activeTier = ref<1 | 2 | null>(null) // 1, 2, or 3
+
+// Individual modal visibility states  
+const showInquiry = ref(false)
+const showPayment = ref(false)
+
+// Handle opening modals with tier selection
+function openPayment(tier: 1 | 2) {
+  activeTier.value = tier
+  showPayment.value = true
+}
+
+function openInquiry() {
+  showInquiry.value = true
+}
+
+// Reset tier on modal close
+watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
+  if (!inquiryOpen && !paymentOpen) {
+    activeTier.value = null
+  }
+})
 </script>
+
 <template>
   <div class="w-full min-h-screen bg-off-white">
     <!-- Hero Section -->
@@ -44,10 +68,14 @@ import { Motion } from 'motion-v'
           Advisory Tiers
         </Motion>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <TierCardClarity />
-          <TierCardExpert />
-          <TierCardFullSupport />
+          <TierCardClarity :disabled="showPayment" @start="() => openPayment(1)" />
+          <TierCardExpert :disabled="showPayment" @start="() => openPayment(2)" />
+          <TierCardFullSupport :disabled="showInquiry" @start="() => openInquiry()" />
         </div>
+
+        <!-- Dialogs rendered at the section root -->
+        <PaymentModal v-model:open="showPayment" :tier="activeTier" />
+        <InquiryModal v-model:open="showInquiry" />
       </div>
     </section>
     <!-- About Section -->

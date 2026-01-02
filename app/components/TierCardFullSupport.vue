@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Motion } from 'motion-v';
-
-const showModal = ref(false)
-function openModal() { showModal.value = true }
-function closeModal() { showModal.value = false }
+const props = defineProps<{ disabled?: boolean }>()
+const emit = defineEmits(['start'])
 </script>
 <template>
   <Motion as="div"
@@ -14,7 +11,7 @@ function closeModal() { showModal.value = false }
     :transition="{ duration: 0.6, delay: 0.3 }"
     class="h-full"
   >
-    <Card class="h-full rounded-sm shadow-xl border-sand-gold border-2 bg-white flex flex-col">
+      <Card class="h-full rounded-sm shadow-xl border-2 border-sand-gold bg-white flex flex-col">
       <CardHeader class="bg-midnight-blue p-8">
         <CardTitle class="text-2xl font-bold text-white font-montserrat">
           TIER 3
@@ -40,10 +37,9 @@ function closeModal() { showModal.value = false }
             Emotional guidance through the decision process with complete support from start to finish
           </p>
         </div>
-        <Button class="w-full mt-8 bg-teal hover:bg-midnight-blue text-white transition-all duration-300 h-12 rounded-sm font-montserrat" @click="openModal">
+          <Button class="w-full mt-6 bg-teal hover:bg-midnight-blue text-white transition-all duration-300 rounded-sm font-montserrat" :disabled="props.disabled" @click="$emit('start')">
           START YOUR JOURNEY
         </Button>
-        <InquiryModal :open="showModal" :onClose="closeModal" />
       </CardContent>
     </Card>
   </Motion>
