@@ -32,7 +32,7 @@ const year = new Date().getFullYear()
         <div class="hidden md:flex items-center gap-8 font-montserrat">
           <NuxtLink to="#tiers" class="text-xs font-medium uppercase tracking-wider transition-colors" :class="scrolled ? 'text-midnight-blue hover:text-teal' : 'text-white hover:text-sand-gold-light'">Advisory Tiers</NuxtLink>
           <NuxtLink to="#about" class="text-xs font-medium uppercase tracking-wider transition-colors" :class="scrolled ? 'text-midnight-blue hover:text-teal' : 'text-white hover:text-sand-gold-light'">About</NuxtLink>
-          <NuxtLink to="#contact" class="text-xs font-medium uppercase tracking-wider transition-colors" :class="scrolled ? 'text-midnight-blue hover:text-teal' : 'text-white hover:text-sand-gold-light'">Contact</NuxtLink>
+          <NuxtLink to="#footer-contact" class="text-xs font-medium uppercase tracking-wider transition-colors" :class="scrolled ? 'text-midnight-blue hover:text-teal' : 'text-white hover:text-sand-gold-light'">Contact</NuxtLink>
           <NuxtLink to="#blog" class="text-xs font-medium uppercase tracking-wider transition-colors" :class="scrolled ? 'text-midnight-blue hover:text-teal' : 'text-white hover:text-sand-gold-light'">Blog</NuxtLink>
         </div>
       </div>
@@ -53,7 +53,7 @@ const year = new Date().getFullYear()
             <ul class="space-y-2 text-sm font-inter">
               <li><NuxtLink to="#tiers" class="text-white/70 hover:text-[#0DA797] transition-colors">Advisory Tiers</NuxtLink></li>
               <li><NuxtLink to="#about" class="text-white/70 hover:text-[#0DA797] transition-colors">About Us</NuxtLink></li>
-              <li><NuxtLink to="#contact" class="text-white/70 hover:text-[#0DA797] transition-colors">Contact</NuxtLink></li>
+              <li><NuxtLink to="#footer-contact" class="text-white/70 hover:text-[#0DA797] transition-colors">Contact</NuxtLink></li>
             </ul>
           </div>
           <div>

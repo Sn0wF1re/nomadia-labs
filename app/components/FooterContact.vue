@@ -1,5 +1,5 @@
 <template>
-  <footer class="w-full py-10 px-6 bg-off-white border-t border-sand-gold flex flex-col items-center">
+  <footer id="footer-contact" class="w-full py-10 px-6 bg-off-white border-t border-sand-gold flex flex-col items-center">
     <div class="max-w-2xl text-center">
       <p class="text-lg font-playfair text-midnight-blue mb-2">
         Ready for a truly bespoke experience?
