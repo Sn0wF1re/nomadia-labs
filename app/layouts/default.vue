@@ -20,16 +20,20 @@ const year = new Date().getFullYear()
     <!-- Navigation -->
     <Motion as=nav
       class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-      :class="scrolled ? 'bg-off-white/90 backdrop-blur-md shadow-sm' : 'bg-white/10 backdrop-blur-sm'"
+      :class="
+        $route.name === 'index'
+          ? (scrolled ? 'bg-off-white/90 backdrop-blur-md shadow-sm' : 'bg-white/10 backdrop-blur-sm')
+          : 'bg-off-white/95 shadow-sm backdrop-blur-md'
+      "
       :initial="{ y: -100 }"
       :animate="{ y: 0 }"
       :transition="{ duration: 0.3 }"
     >
       <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-        <div class="text-2xl font-semibold transition-colors font-playfair" :class="scrolled ? 'text-midnight-blue' : 'text-white'">
+        <div class="text-2xl font-semibold font-playfair" :class="$route.name === 'index' ? (scrolled ? 'text-midnight-blue' : 'text-white') : 'text-midnight-blue'">
           Nomadia
         </div>
-        <div class="hidden md:flex items-center gap-8 font-montserrat">
+        <div v-if="$route.name === 'index'" class="hidden md:flex items-center gap-8 font-montserrat">
           <NuxtLink to="#tiers" class="text-xs font-medium uppercase tracking-wider transition-colors" :class="scrolled ? 'text-midnight-blue hover:text-teal' : 'text-white hover:text-sand-gold-light'">Advisory Tiers</NuxtLink>
           <NuxtLink to="#about" class="text-xs font-medium uppercase tracking-wider transition-colors" :class="scrolled ? 'text-midnight-blue hover:text-teal' : 'text-white hover:text-sand-gold-light'">About</NuxtLink>
           <NuxtLink to="#footer-contact" class="text-xs font-medium uppercase tracking-wider transition-colors" :class="scrolled ? 'text-midnight-blue hover:text-teal' : 'text-white hover:text-sand-gold-light'">Contact</NuxtLink>
