@@ -81,6 +81,7 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
     <!-- About Section -->
     <AboutSection />
     <!-- Contact Section -->
-    <ContactSection />
+    <!-- <ContactSection /> -->
+    <FooterContact />
   </div>
 </template>
