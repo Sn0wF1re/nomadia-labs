@@ -28,8 +28,9 @@ const year = new Date().getFullYear()
       :transition="{ duration: 0.3 }"
     >
       <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-        <div class="text-2xl font-semibold font-playfair" :class="$route.name === 'index' ? (scrolled ? 'text-midnight-blue' : 'text-white') : 'text-midnight-blue'">
-          Nomadia
+        <div class="flex items-center">
+          <NuxtImg src="/nomadia-logo.png" alt="Nomadia logo" width="60" height="60" class="rounded-full" />
+          <span class="text-2xl font-semibold font-playfair" :class="$route.name === 'index' ? (scrolled ? 'text-midnight-blue' : 'text-white') : 'text-midnight-blue'">Nomadia</span>
         </div>
         <div v-if="$route.name === 'index'" class="hidden md:flex items-center gap-8 font-montserrat">
           <NuxtLink to="#tiers" class="text-xs font-medium uppercase tracking-wider transition-colors" :class="scrolled ? 'text-midnight-blue hover:text-teal' : 'text-white hover:text-sand-gold-light'">Advisory Tiers</NuxtLink>
@@ -47,7 +48,10 @@ const year = new Date().getFullYear()
       <div class="max-w-7xl mx-auto">
         <div class="grid md:grid-cols-4 gap-8 mb-8">
           <div>
-            <h3 class="text-2xl mb-4 font-playfair">Nomadia</h3>
+            <div class="flex items-center mb-4">
+              <NuxtImg src="/nomadia-logo.png" alt="Nomadia logo" width="60" height="60" class="rounded-full" />
+              <h3 class="text-2xl font-playfair">Nomadia</h3>
+            </div>
             <p class="text-sm text-white/70 font-inter">Expert advisory services for life's important decisions.</p>
           </div>
           <div>
