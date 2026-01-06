@@ -36,7 +36,7 @@ onMounted(() => {
         phone: "${phone.value}"
       }
     });
-    Cal.ns["${calNamespace.value}"]( "ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#c5a059"}},"hideEventTypeDetails":true,"layout":"month_view"});
+    Cal.ns["${calNamespace.value}"]( "ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#c5a059"}, "dark":{"cal-brand":"#c5a059"}},"hideEventTypeDetails":true,"layout":"month_view"});
   `
   document.body.appendChild(script)
 })
