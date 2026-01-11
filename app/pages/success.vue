@@ -1,17 +1,53 @@
-
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
-import { computed, onMounted, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { useMediaQuery } from '@vueuse/core'
+import { ref, computed, onMounted } from 'vue'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog'
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+} from '@/components/ui/drawer'
 
+const open = ref(true)
 const route = useRoute()
+const router = useRouter()
 const name = computed(() => route.query.name as string || '')
 const email = computed(() => route.query.email as string || '')
 const phone = computed(() => route.query.phone as string || '')
 const tier = computed(() => route.query.tier as string || 'clarity')
+const isPremium = computed(() => tier.value === 'full-support')
 
 const calSlug = computed(() => tier.value === 'expert' ? 'expert' : 'clarity')
 const calNamespace = computed(() => `cal-success-${calSlug.value}`)
 const calDivId = computed(() => `my-cal-inline-${calSlug.value}`)
+
+const isDesktop = useMediaQuery('(min-width: 640px)')
+
+const Modal = computed(() => ({
+  Root: isDesktop.value ? Dialog : Drawer,
+  Content: isDesktop.value ? DialogContent : DrawerContent,
+  Header: isDesktop.value ? DialogHeader : DrawerHeader,
+  Title: isDesktop.value ? DialogTitle : DrawerTitle,
+  Description: isDesktop.value ? DialogDescription : DrawerDescription,
+}))
+
+// Props for the modal root - Drawer uses `dismissible`, Dialog uses event handlers
+const modalRootProps = computed(() => {
+  if (!isDesktop.value) {
+    // Drawer: use dismissible prop to prevent closing on outside click
+    return { dismissible: false }
+  }
+  return {}
+})
 
 onMounted(() => {
   // Remove any previous embed script
@@ -40,6 +76,11 @@ onMounted(() => {
   `
   document.body.appendChild(script)
 })
+
+function onClose() {
+  open.value = false
+  router.push('/')
+}
 </script>
 
 <template>
@@ -52,27 +93,45 @@ onMounted(() => {
       />
       <div class="absolute inset-0 bg-gradient-to-r from-[#0C354D]/70 to-[#0C354D]/50" />
     </div>
-    <div class="max-w-lg w-full bg-white/90 rounded-xl shadow-2xl border-2 border-sand-gold p-10 text-center backdrop-blur-md z-10">
-      <Motion as="div"
-        :initial="{ scale: 0, opacity: 0 }"
-        :animate="{ scale: 1, opacity: 1 }"
-        :transition="{ duration: 0.5, type: 'spring', stiffness: 200 }"
-        class="flex justify-center items-center mb-4"
+    <component :is="Modal.Root" v-model:open="open" v-bind="modalRootProps">
+      <component
+        :is="Modal.Content"
+        class="sm:max-w-lg"
+        :class="[{ 'px-2 pb-8 *:px-4': !isDesktop }]"
       >
-        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="32" cy="32" r="32" fill="#C5A059" fill-opacity="0.15"/>
-          <circle cx="32" cy="32" r="28" fill="#C5A059" fill-opacity="0.25"/>
-          <path d="M20 34L29 43L44 26" stroke="#249794" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </Motion>
-      <h1 class="text-4xl font-bold mb-4 text-midnight-blue font-playfair">Payment Successful!</h1>
-      <p class="text-lg text-sand-gold font-montserrat mb-6">Thank you for booking your session with Nomadia.</p>
-      <p class="text-base text-gray-700 font-inter mb-8">You're one step closer to clarity. Please schedule your session below.</p>
-      <!-- Cal.com Inline Embed -->
-      <div class="w-full flex justify-center">
-        <div :id="calDivId" style="width:100%;height:600px;overflow:scroll"></div>
-      </div>
-      <p class="mt-8 text-xs text-gray-500 font-montserrat">If you have any questions, contact us at <a href="mailto:advisory@nomadia.co.ke" class="text-sand-gold underline">advisory@nomadia.co.ke</a></p>
-    </div>
-   </div>
+        <component :is="Modal.Header">
+          <component :is="Modal.Title" class="text-2xl md:text-3xl font-bold text-midnight-blue font-playfair text-center">
+            Payment Successful!
+          </component>
+          <component :is="Modal.Description" class="text-base text-sand-gold font-montserrat text-center">
+            Thank you for booking your session with Nomadia.
+          </component>
+        </component>
+        <div
+          class="w-full bg-white/90 rounded-xl p-4 md:p-8 text-center backdrop-blur-md z-10 mx-auto"
+          :class="{
+            'border-2 border-sand-gold': isPremium,
+          }"
+        >
+          <Motion as="div"
+            :initial="{ scale: 0, opacity: 0 }"
+            :animate="{ scale: 1, opacity: 1 }"
+            :transition="{ duration: 0.5, type: 'spring', stiffness: 200 }"
+            class="flex justify-center items-center mb-4"
+          >
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="32" fill="#C5A059" fill-opacity="0.15"/>
+              <circle cx="32" cy="32" r="28" fill="#C5A059" fill-opacity="0.25"/>
+              <path d="M20 34L29 43L44 26" stroke="#249794" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </Motion>
+          <p class="text-sm md:text-base text-gray-700 font-inter mb-6 md:mb-8">You're one step closer to clarity. Please schedule your session below.</p>
+          <div class="w-full flex justify-center">
+            <div :id="calDivId" style="width:100%;height:400px;overflow:scroll"></div>
+          </div>
+          <p class="mt-6 md:mt-8 text-xs text-gray-500 font-montserrat">If you have any questions, contact us at <a href="mailto:advisory@nomadia.co.ke" class="text-sand-gold underline">advisory@nomadia.co.ke</a></p>
+        </div>
+      </component>
+    </component>
+  </div>
 </template>
