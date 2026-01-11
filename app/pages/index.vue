@@ -74,15 +74,15 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
           <TierCardFullSupport :disabled="showInquiry" @start="() => openInquiry()" />
         </div>
         <!-- Mobile: Stacked cards effect - each card stacks on top of previous -->
-        <div class="md:hidden flex flex-col relative">
-          <div class="sticky top-16 z-10 transform-gpu">
-            <TierCardClarity :disabled="showPayment" @start="() => openPayment(1)" class="shadow-lg" />
+        <div class="md:hidden flex flex-col relative -mx-6">
+          <div class="sticky top-16 z-10 transform-gpu px-2">
+            <TierCardClarity :disabled="showPayment" @start="() => openPayment(1)" class="shadow-lg w-full" />
           </div>
-          <div class="sticky top-20 z-20 transform-gpu">
-            <TierCardExpert :disabled="showPayment" @start="() => openPayment(2)" class="shadow-xl" />
+          <div class="sticky top-20 z-20 transform-gpu px-2">
+            <TierCardExpert :disabled="showPayment" @start="() => openPayment(2)" class="shadow-xl w-full" />
           </div>
-          <div class="sticky top-24 z-30 transform-gpu">
-            <TierCardFullSupport :disabled="showInquiry" @start="() => openInquiry()" class="shadow-2xl" />
+          <div class="sticky top-24 z-30 transform-gpu px-2">
+            <TierCardFullSupport :disabled="showInquiry" @start="() => openInquiry()" class="shadow-2xl w-full" />
           </div>
         </div>
 
