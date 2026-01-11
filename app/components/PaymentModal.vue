@@ -1,5 +1,24 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useMediaQuery } from '@vueuse/core'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogClose,
+} from '@/components/ui/dialog'
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerClose,
+} from '@/components/ui/drawer'
 
 // Two-way binding for modal state
 const isOpen = defineModel<boolean>('open', {
@@ -10,6 +29,18 @@ const isOpen = defineModel<boolean>('open', {
 const props = defineProps<{
   tier: 1 | 2 | null
 }>()
+
+const isDesktop = useMediaQuery('(min-width: 640px)')
+
+const Modal = computed(() => ({
+  Root: isDesktop.value ? Dialog : Drawer,
+  Content: isDesktop.value ? DialogContent : DrawerContent,
+  Header: isDesktop.value ? DialogHeader : DrawerHeader,
+  Title: isDesktop.value ? DialogTitle : DrawerTitle,
+  Description: isDesktop.value ? DialogDescription : DrawerDescription,
+  Footer: isDesktop.value ? DialogFooter : DrawerFooter,
+  Close: isDesktop.value ? DialogClose : DrawerClose,
+}))
 
 const name = ref('')
 const email = ref('')
@@ -31,17 +62,18 @@ async function handlePay() {
 </script>
 
 <template>
-  <Dialog v-model:open="isOpen">
-    <DialogContent class="[&>button:last-child]:hidden bg-off-white rounded-lg shadow-xl w-full max-w-lg p-8 border border-sand-gold">
-      <DialogHeader class="pr-8">
-        <DialogTitle class="text-2xl font-bold mb-2 text-midnight-blue font-playfair">Start Your Journey</DialogTitle>
-        <DialogDescription class="mb-6 text-sand-gold font-montserrat">
+  <component :is="Modal.Root" v-model:open="isOpen">
+    <component
+      :is="Modal.Content"
+      class="bg-off-white rounded-lg shadow-xl w-full sm:max-w-lg border border-sand-gold"
+      :class="[{ 'px-4 pb-8 pt-6': !isDesktop, 'p-8': isDesktop }]"
+    >
+      <component :is="Modal.Header" class="pr-8">
+        <component :is="Modal.Title" class="text-2xl font-bold mb-2 text-midnight-blue font-playfair">Start Your Journey</component>
+        <component :is="Modal.Description" class="mb-6 text-sand-gold font-montserrat">
           {{ tierLabel }} &mdash; {{ amount.toLocaleString() }} KES
-        </DialogDescription>
-        <DialogClose as-child>
-          <Button class="absolute top-4 right-4 text-lg text-midnight-blue bg-transparent hover:bg-sand-gold-light/40 px-2 py-0" variant="ghost">&times;</Button>
-        </DialogClose>
-      </DialogHeader>
+        </component>
+      </component>
       <form @submit.prevent="handlePay" class="space-y-4">
         <div>
           <Label class="block text-xs font-montserrat mb-1">Name</Label>
@@ -63,13 +95,13 @@ async function handlePay() {
             <Input v-model="questions[2]" placeholder="Question 3" required />
           </div>
         </div>
-        <DialogFooter>
+        <component :is="Modal.Footer">
           <Button type="submit" class="w-full bg-midnight-blue text-white py-2 rounded-sm font-montserrat text-base mt-2 hover:bg-sand-gold transition-all" :disabled="loading">
             <span v-if="loading">Processing...</span>
             <span v-else>Pay & Book</span>
           </Button>
-        </DialogFooter>
+        </component>
       </form>
-    </DialogContent>
-  </Dialog>
+    </component>
+  </component>
 </template>
