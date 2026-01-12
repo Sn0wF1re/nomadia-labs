@@ -46,10 +46,10 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
         :transition="{ duration: 0.8, delay: 0.2 }"
       >
         <h1 class="text-5xl md:text-7xl mb-6 leading-tight text-white font-playfair">
-          Who we are, what we do, and why it matters
+          Relocate with Confidence. Settle with Ease.
         </h1>
         <p class="text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-inter">
-          Expert guidance for life's most important decisions. We help you navigate complexity with clarity and confidence.
+          Nomadia provides expert travel and relocation guidance for individuals, families, and professionals.
         </p>
       </Motion>
     </section>
@@ -65,7 +65,8 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
           :in-view-options="{ once: true }"
           :transition="{ duration: 0.6 }"
         >
-          Advisory Tiers
+          <h3>Advisory Tiers</h3>
+          <p class="text-sm font-regular text-sand-gold mt-2">*All advisory sessions include written notes shared within 48 hours.</p>
         </Motion>
         <!-- Desktop: Grid layout -->
         <div class="hidden md:grid md:grid-cols-3 gap-8">

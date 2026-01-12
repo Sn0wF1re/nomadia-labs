@@ -23,9 +23,10 @@ import { Globe } from 'lucide-vue-next'
           :transition="{ duration: 0.6 }"
         >
           <div class="bg-sand-gold-light/20 p-8 rounded-sm border border-sand-gold/30">
-            <h3 class="text-2xl font-semibold mb-4 text-midnight-blue font-playfair">Our Mission</h3>
+            <h3 class="text-2xl font-semibold mb-4 text-midnight-blue font-playfair">How We Help</h3>
             <p class="text-gray-800 leading-relaxed font-medium font-inter">
-              We believe everyone deserves access to expert guidance for life's most important decisions. Whether you're choosing a career path, making a major purchase, or navigating a life transition, we provide the clarity and support you need to move forward with confidence.
+              We help you make clear, confident, and informed decisions—whether it’s choosing a destination, planning your lifestyle, managing costs, or preparing for long-term moves.
+              Our advisory services combine research, real-world insights, and expert guidance to help you evaluate options and choose the path that best fits your goals.
             </p>
           </div>
         </Motion>
@@ -55,7 +56,7 @@ import { Globe } from 'lucide-vue-next'
         </div>
         <div class="bg-sand-gold-light/20 p-8 rounded-sm border border-sand-gold/30 max-w-3xl mx-auto">
           <p class="text-gray-800 leading-relaxed font-medium font-inter text-center">
-            At Nomadia, our advisors bring a wealth of first-hand experience from living and working across the globe - including Finland, the UK, China, and Germany. Our team understands the challenges and opportunities of moving abroad, navigating new cultures, and building a life in unfamiliar places.<br><br>
+            At Nomadia, our advisors bring a wealth of first-hand experience from living and working across the globe - including Finland, the UK, China, Germany, and the rest of Europe. Our team understands the challenges and opportunities of moving abroad, navigating new cultures, and building a life in unfamiliar places.<br><br>
             Whether you’re seeking guidance on immigration, adapting to a new environment, or making important decisions about your future, we offer advice rooted in diverse backgrounds and real-world journeys. We’re here to help you thrive - wherever you choose to call home.
           </p>
         </div>

@@ -16,26 +16,38 @@ const emit = defineEmits(['start'])
         <CardTitle class="text-2xl font-bold text-midnight-blue font-montserrat">
           TIER 1
         </CardTitle>
-        <p class="text-xl font-light mt-2 text-midnight-blue font-playfair">
+        <p class="text-md font-light mt-2 text-midnight-blue font-playfair">
           Clarity Call
+        </p>
+        <p class="text-md font-light mt-2 text-midnight-blue font-playfair">
+          Duration: 30 minutes
+        </p>
+        <p class="text-md font-light mt-2 text-midnight-blue font-playfair">
+          Fee: KES 5,000
         </p>
       </CardHeader>
       <CardContent class="p-6 bg-white flex-1 flex flex-col justify-between">
         <div class="mb-6">
           <p class="text-sm text-gray-700 mb-4 font-medium font-inter">
-            <strong class="text-midnight-blue">Best for:</strong> Someone who doesn't know where to start
+            <strong class="text-midnight-blue">Best for:</strong> Individuals unsure where to start with travel or relocation
           </p>
           <p class="text-sm text-gray-700 leading-relaxed font-inter">
-            A focused 60-minute consultation to identify your key priorities and create a roadmap forward.
+            A focused 30-minute consultation to establish direction and eliminate uncertainty
           </p>
         </div>
         <div class="bg-sand-gold/15 p-5 rounded-sm mt-4 border-2 border-sand-gold">
           <p class="text-xs uppercase tracking-wider font-bold mb-2 text-sand-gold font-montserrat">
             OUTCOME
           </p>
-          <p class="text-sm text-midnight-blue font-semibold font-inter">
-            Clear next steps and a personalized action plan
-          </p>
+
+          <ul class="list-disc pl-5">
+            <li class="text-sm text-midnight-blue font-semibold font-inter">
+              Identify key priorities and options
+            </li>
+            <li class="text-sm text-midnight-blue font-semibold font-inter">
+              Clear starting point and practical roadmap
+            </li>
+          </ul>
         </div>
         <Button class="w-full mt-6 bg-teal hover:bg-midnight-blue text-white transition-all duration-300 rounded-sm font-montserrat" :disabled="props.disabled" @click="$emit('start')">
           START YOUR JOURNEY

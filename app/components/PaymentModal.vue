@@ -48,7 +48,7 @@ const phone = ref('')
 const questions = ref(['', '', ''])
 const loading = ref(false)
 
-const amount = computed(() => props.tier === 1 ? 5000 : 15000)
+const amount = computed(() => props.tier === 1 ? 5000 : 25000)
 const tierLabel = computed(() => props.tier === 1 ? 'Clarity Session' : 'Expert Session')
 
 async function handlePay() {
