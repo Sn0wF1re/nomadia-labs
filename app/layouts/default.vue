@@ -52,7 +52,7 @@ const year = new Date().getFullYear()
                 <NuxtImg src="/nomadia-logo.png" alt="Nomadia logo" width="40" height="40" class="rounded-full" />
               <h3 class="text-2xl font-playfair">Nomadia</h3>
             </div>
-            <p class="text-sm text-white/70 font-inter">Expert advisory services for life's important decisions.</p>
+            <p class="text-sm text-white/70 font-inter">Expert travel and relocation guidance. </p>
           </div>
           <div>
             <h4 class="text-xs uppercase tracking-wider mb-4 font-bold text-sand-gold-light font-montserrat">Quick Links</h4>
