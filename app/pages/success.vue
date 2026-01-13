@@ -17,6 +17,12 @@ import {
   DrawerDescription,
 } from '@/components/ui/drawer'
 
+useSeoMeta({
+  title: 'Booking Confirmed | Nomadia',
+  description: 'Your advisory session has been booked. Schedule your call with Nomadia.',
+  robots: 'noindex, nofollow', // Don't index transactional pages
+})
+
 const open = ref(true)
 const route = useRoute()
 const router = useRouter()
@@ -129,7 +135,7 @@ function onClose() {
           <div class="w-full flex justify-center">
             <div :id="calDivId" style="width:100%;height:400px;overflow:scroll"></div>
           </div>
-          <p class="mt-6 md:mt-8 text-xs text-gray-500 font-montserrat">If you have any questions, contact us at <a href="mailto:advisory@nomadia.co.ke" class="text-sand-gold underline">advisory@nomadia.co.ke</a></p>
+          <p class="mt-6 md:mt-8 text-xs text-gray-500 font-montserrat">If you have any questions, contact us at <a href="mailto:advisory@nomadialabs.com" class="text-sand-gold underline">advisory@nomadialabs.com</a></p>
         </div>
       </component>
     </component>

@@ -2,6 +2,84 @@
 import { ref } from 'vue'
 import { Motion } from 'motion-v'
 
+// SEO Meta
+useSeoMeta({
+  title: 'Nomadia | Expert Relocation & Travel Advisory',
+  description: 'Nomadia provides expert travel and relocation guidance for individuals, families, and professionals. Relocate with confidence, settle with ease.',
+  ogTitle: 'Nomadia | Expert Relocation & Travel Advisory',
+  ogDescription: 'Expert guidance for life\'s most important decisions. We help you navigate complexity with clarity and confidence.',
+  ogImage: '/og-image.png',
+  ogUrl: 'https://nomadialabs.com',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'Nomadia | Expert Relocation & Travel Advisory',
+  twitterDescription: 'Expert travel and relocation guidance for individuals, families, and professionals.',
+  twitterImage: '/og-image.png',
+})
+
+// Structured Data
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'Nomadia',
+        url: 'https://nomadialabs.com',
+        logo: 'https://nomadialabs.com/logo.png',
+        description: 'Expert travel and relocation guidance for individuals, families, and professionals.',
+        sameAs: [
+          'https://twitter.com/nomadia',
+          'https://linkedin.com/company/nomadia',
+        ],
+        contactPoint: {
+          '@type': 'ContactPoint',
+          email: 'advisory@nomadialabs.com',
+          contactType: 'customer service',
+        },
+      }),
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        serviceType: 'Relocation Advisory',
+        provider: {
+          '@type': 'Organization',
+          name: 'Nomadia',
+        },
+        offers: [
+          {
+            '@type': 'Offer',
+            name: 'Clarity Call',
+            description: 'A focused 30-minute consultation to establish direction and eliminate uncertainty',
+            price: '5000',
+            priceCurrency: 'KES',
+          },
+          {
+            '@type': 'Offer',
+            name: 'Expert Direction',
+            description: 'Deep-dive analysis with comprehensive research, data, and expert recommendations tailored to your situation.',
+            price: '25000',
+            priceCurrency: 'KES',
+          },
+          {
+            '@type': 'Offer',
+            name: 'Full Support',
+            description: 'Comprehensive partnership throughout your decision journey with continuous guidance, emotional support, and expert advice. This is a longer-term relationship, tailor-made per individual and priced based on scope.',
+            priceSpecification: {
+              '@type': 'PriceSpecification',
+              price: 'Contact for pricing',
+            },
+          },
+        ],
+      }),
+    },
+  ],
+})
+
 // Shared data state
 const activeTier = ref<1 | 2 | null>(null) // 1, 2, or 3
 

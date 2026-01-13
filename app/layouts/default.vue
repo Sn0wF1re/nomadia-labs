@@ -71,7 +71,7 @@ const year = new Date().getFullYear()
           </div>
           <div>
             <h4 class="text-xs uppercase tracking-wider mb-4 font-bold text-sand-gold-light font-montserrat">Connect</h4>
-            <p class="text-sm text-white/70 font-inter">hello@nomadia.com</p>
+            <p class="text-sm text-white/70 font-inter">advisory@nomadialabs.com</p>
           </div>
         </div>
         <div class="border-t border-sand-gold/30 pt-8 text-center text-sm text-white/60 font-inter">

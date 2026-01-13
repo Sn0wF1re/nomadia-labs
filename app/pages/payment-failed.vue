@@ -17,6 +17,12 @@ import {
   DrawerDescription,
 } from '@/components/ui/drawer'
 
+useSeoMeta({
+  title: 'Payment Failed | Nomadia',
+  description: 'Your payment could not be processed. Please try again.',
+  robots: 'noindex, nofollow', // Don't index error pages
+})
+
 const router = useRouter()
 const open = ref(true)
 
