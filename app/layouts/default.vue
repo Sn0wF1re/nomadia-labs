@@ -33,10 +33,10 @@ const year = new Date().getFullYear()
           <span class="text-2xl font-semibold font-playfair" :class="$route.name === 'index' ? (scrolled ? 'text-midnight-blue' : 'text-white') : 'text-midnight-blue'">Nomadia</span>
         </div>
         <div v-if="$route.name === 'index'" class="hidden md:flex items-center gap-8 font-montserrat">
-          <NuxtLink to="#tiers" class="text-xs font-medium uppercase tracking-wider transition-colors" :class="scrolled ? 'text-midnight-blue hover:text-teal' : 'text-white hover:text-sand-gold-light'">Advisory Tiers</NuxtLink>
-          <NuxtLink to="#about" class="text-xs font-medium uppercase tracking-wider transition-colors" :class="scrolled ? 'text-midnight-blue hover:text-teal' : 'text-white hover:text-sand-gold-light'">About</NuxtLink>
-          <NuxtLink to="#footer-contact" class="text-xs font-medium uppercase tracking-wider transition-colors" :class="scrolled ? 'text-midnight-blue hover:text-teal' : 'text-white hover:text-sand-gold-light'">Contact</NuxtLink>
-          <NuxtLink to="#blog" class="text-xs font-medium uppercase tracking-wider transition-colors" :class="scrolled ? 'text-midnight-blue hover:text-teal' : 'text-white hover:text-sand-gold-light'">Blog</NuxtLink>
+          <NuxtLink to="/#tiers" class="text-xs font-medium uppercase tracking-wider transition-colors" :class="scrolled ? 'text-midnight-blue hover:text-teal' : 'text-white hover:text-sand-gold-light'">Advisory Tiers</NuxtLink>
+          <NuxtLink to="/#about" class="text-xs font-medium uppercase tracking-wider transition-colors" :class="scrolled ? 'text-midnight-blue hover:text-teal' : 'text-white hover:text-sand-gold-light'">About</NuxtLink>
+          <NuxtLink to="/#footer-contact" class="text-xs font-medium uppercase tracking-wider transition-colors" :class="scrolled ? 'text-midnight-blue hover:text-teal' : 'text-white hover:text-sand-gold-light'">Contact</NuxtLink>
+          <NuxtLink to="/#blog" class="text-xs font-medium uppercase tracking-wider transition-colors" :class="scrolled ? 'text-midnight-blue hover:text-teal' : 'text-white hover:text-sand-gold-light'">Blog</NuxtLink>
         </div>
       </div>
     </Motion>
@@ -57,16 +57,16 @@ const year = new Date().getFullYear()
           <div>
             <h4 class="text-xs uppercase tracking-wider mb-4 font-bold text-sand-gold-light font-montserrat">Quick Links</h4>
             <ul class="space-y-2 text-sm font-inter">
-              <li><NuxtLink to="#tiers" class="text-white/70 hover:text-[#0DA797] transition-colors">Advisory Tiers</NuxtLink></li>
-              <li><NuxtLink to="#about" class="text-white/70 hover:text-[#0DA797] transition-colors">About Us</NuxtLink></li>
-              <li><NuxtLink to="#footer-contact" class="text-white/70 hover:text-[#0DA797] transition-colors">Contact</NuxtLink></li>
+              <li><NuxtLink to="/#tiers" class="text-white/70 hover:text-[#0DA797] transition-colors">Advisory Tiers</NuxtLink></li>
+              <li><NuxtLink to="/#about" class="text-white/70 hover:text-[#0DA797] transition-colors">About Us</NuxtLink></li>
+              <li><NuxtLink to="/#footer-contact" class="text-white/70 hover:text-[#0DA797] transition-colors">Contact</NuxtLink></li>
             </ul>
           </div>
           <div>
             <h4 class="text-xs uppercase tracking-wider mb-4 font-bold text-sand-gold-light font-montserrat">Legal</h4>
             <ul class="space-y-2 text-sm font-inter">
-              <li><NuxtLink to="#" class="text-white/70 hover:text-[#0DA797] transition-colors">Privacy Policy</NuxtLink></li>
-              <li><NuxtLink to="#" class="text-white/70 hover:text-[#0DA797] transition-colors">Terms of Service</NuxtLink></li>
+              <li><NuxtLink to="/#" class="text-white/70 hover:text-[#0DA797] transition-colors">Privacy Policy</NuxtLink></li>
+              <li><NuxtLink to="/#" class="text-white/70 hover:text-[#0DA797] transition-colors">Terms of Service</NuxtLink></li>
             </ul>
           </div>
           <div>
