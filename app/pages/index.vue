@@ -4,16 +4,17 @@ import { Motion } from 'motion-v'
 
 // SEO Meta
 useSeoMeta({
-  title: 'Nomadia | Expert Relocation & Travel Advisory',
-  description: 'Nomadia provides expert travel and relocation guidance for individuals, families, and professionals. Relocate with confidence, settle with ease.',
-  ogTitle: 'Nomadia | Expert Relocation & Travel Advisory',
-  ogDescription: 'Expert guidance for life\'s most important decisions. We help you navigate complexity with clarity and confidence.',
+  title: 'Nomadia | Kenya Relocation Advisory | Move to Finland, UK, Germany, China & Europe',
+  description: 'Expert relocation guidance for Kenyans moving abroad. From Nairobi to Finland, UK, Germany, China & Europe. Visa support, pre-departure planning, and settlement assistance for individuals, families & professionals.',
+  keywords: 'relocate from Kenya, Kenya to Finland, Kenya to UK, Kenya to Germany, Kenya to China, Kenya to Europe, emigration from Kenya, Kenyan diaspora, international relocation Nairobi, Kenya relocation consultant, move abroad from Kenya, Kenyan professionals abroad, visa guidance Kenya, expat advisory Kenya',
+  ogTitle: 'Nomadia | Kenya Relocation Advisory | Move to Finland, UK, Germany & Europe',
+  ogDescription: 'Expert relocation guidance for Kenyans moving to Finland, UK, Germany, China & Europe. Visa support, destination planning, and settlement assistance.',
   ogImage: '/og-image.png',
   ogUrl: 'https://nomadialabs.com',
   ogType: 'website',
   twitterCard: 'summary_large_image',
-  twitterTitle: 'Nomadia | Expert Relocation & Travel Advisory',
-  twitterDescription: 'Expert travel and relocation guidance for individuals, families, and professionals.',
+  twitterTitle: 'Nomadia | Kenya Relocation Advisory | Move Abroad with Confidence',
+  twitterDescription: 'Expert relocation guidance for Kenyans moving to Finland, UK, Germany, China & Europe. From Nairobi to your new home.',
   twitterImage: '/og-image.png',
 })
 
@@ -28,7 +29,14 @@ useHead({
         name: 'Nomadia',
         url: 'https://nomadialabs.com',
         logo: 'https://nomadialabs.com/logo.png',
-        description: 'Expert travel and relocation guidance for individuals, families, and professionals.',
+        description: 'Expert relocation advisory for Kenyans moving to Finland, UK, Germany, China & Europe. Visa guidance, destination planning, and settlement support.',
+        areaServed: [
+          { '@type': 'Country', name: 'Kenya' },
+          { '@type': 'Country', name: 'Finland' },
+          { '@type': 'Country', name: 'United Kingdom' },
+          { '@type': 'Country', name: 'Germany' },
+          { '@type': 'Country', name: 'China' },
+        ],
         sameAs: [
           'https://twitter.com/nomadia',
           'https://linkedin.com/company/nomadia',
@@ -37,6 +45,8 @@ useHead({
           '@type': 'ContactPoint',
           email: 'advisory@nomadialabs.com',
           contactType: 'customer service',
+          areaServed: 'KE',
+          availableLanguage: ['English', 'Swahili'],
         },
       }),
     },
@@ -45,30 +55,35 @@ useHead({
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'Service',
-        serviceType: 'Relocation Advisory',
+        serviceType: 'Kenya Relocation Advisory',
         provider: {
           '@type': 'Organization',
           name: 'Nomadia',
         },
+        areaServed: {
+          '@type': 'Country',
+          name: 'Kenya',
+        },
+        description: 'Expert relocation advisory for Kenyans moving to Finland, UK, Germany, China & Europe. Visa guidance, pre-departure planning, and settlement support.',
         offers: [
           {
             '@type': 'Offer',
             name: 'Clarity Call',
-            description: 'A focused 30-minute consultation to establish direction and eliminate uncertainty',
+            description: 'A focused 30-minute consultation for Kenyans planning to relocate abroad. Get direction on destinations like Finland, UK, Germany, or China.',
             price: '5000',
             priceCurrency: 'KES',
           },
           {
             '@type': 'Offer',
             name: 'Expert Direction',
-            description: 'Deep-dive analysis with comprehensive research, data, and expert recommendations tailored to your situation.',
+            description: 'Deep-dive relocation analysis for Kenyan individuals and families. Comprehensive research on Finland, UK, Germany, China & Europe with tailored recommendations.',
             price: '25000',
             priceCurrency: 'KES',
           },
           {
             '@type': 'Offer',
             name: 'Full Support',
-            description: 'Comprehensive partnership throughout your decision journey with continuous guidance, emotional support, and expert advice. This is a longer-term relationship, tailor-made per individual and priced based on scope.',
+            description: 'Complete relocation partnership for Kenyans moving abroad. Visa application help, step-by-step guidance, network introductions, and ongoing support for moves to Finland, UK, Germany, China & Europe.',
             priceSpecification: {
               '@type': 'PriceSpecification',
               price: 'Contact for pricing',
@@ -124,10 +139,10 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
         :transition="{ duration: 0.8, delay: 0.2 }"
       >
         <h1 class="text-5xl md:text-7xl mb-6 leading-tight text-white font-playfair">
-          Relocate with Confidence. Settle with Ease.
+          Relocate from Kenya with Confidence. Settle Abroad Seamlessly.
         </h1>
         <p class="text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-inter">
-          Nomadia provides expert travel and relocation guidance for individuals, families, and professionals.
+          Nomadia provides expert relocation guidance for Kenyans moving to Finland, UK, Germany, China & Europe. From Kenya to your new home.
         </p>
       </Motion>
     </section>

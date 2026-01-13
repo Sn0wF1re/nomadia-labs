@@ -28,7 +28,7 @@ export default defineNuxtConfig({
   site: {
     url: 'https://nomadialabs.com',
     name: 'Nomadia',
-    description: 'Expert travel and relocation guidance for individuals, families, and professionals.',
+    description: 'Expert relocation advisory for Kenyans moving to Finland, UK, Germany, China & Europe. Visa guidance, pre-departure planning, and settlement support.',
     defaultLocale: 'en',
   },
   app: {
