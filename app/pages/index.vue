@@ -151,14 +151,14 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
     <section id="tiers" class="py-24 px-6 bg-off-white relative">
       <div class="absolute top-15 left-1/2 -translate-x-1/2 w-24 h-0.5 bg-sand-gold" />
       <div class="max-w-7xl mx-auto">
-        <Motion as="h2"
-          class="text-4xl md:text-5xl font-semibold text-center mb-16 text-midnight-blue font-playfair"
+        <Motion as="div"
+          class="text-center mb-16"
           :initial="{ opacity: 0, y: 20 }"
           :in-view="{ opacity: 1, y: 0 }"
           :in-view-options="{ once: true }"
           :transition="{ duration: 0.6 }"
         >
-          <h3>Advisory Tiers</h3>
+          <h2 class="text-4xl md:text-5xl font-semibold text-midnight-blue font-playfair">Advisory Tiers</h2>
           <p class="text-sm font-regular text-sand-gold mt-2">*All advisory sessions include written notes shared within 48 hours.</p>
         </Motion>
         <!-- Desktop: Grid layout -->
@@ -169,10 +169,10 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
         </div>
         <!-- Mobile: Stacked cards effect - each card stacks on top of previous -->
         <div class="md:hidden flex flex-col relative -mx-6">
-          <div class="sticky top-16 z-10 transform-gpu px-2 pb-[420px]">
+          <div class="sticky top-16 z-10 transform-gpu px-2 pb-80">
             <TierCardClarity :disabled="showPayment" @start="() => openPayment(1)" class="shadow-lg w-full" />
           </div>
-          <div class="sticky top-16 z-20 transform-gpu px-2 pb-[420px]">
+          <div class="sticky top-16 z-20 transform-gpu px-2 pb-80">
             <TierCardExpert :disabled="showPayment" @start="() => openPayment(2)" class="shadow-xl w-full" />
           </div>
           <div class="sticky top-16 z-30 transform-gpu px-2">
