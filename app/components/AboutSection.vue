@@ -36,10 +36,13 @@ import { Globe } from 'lucide-vue-next'
           :in-view-options="{ once: true }"
           :transition="{ duration: 0.6 }"
         >
-          <img
+          <NuxtImg
             src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop"
-            alt="Team collaboration"
+            alt="Kenya relocation consultants - team collaboration"
             class="w-full h-full object-cover rounded-sm shadow-md"
+            width="2070"
+            height="1380"
+            loading="lazy"
           />
         </Motion>
       </div>

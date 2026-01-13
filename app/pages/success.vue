@@ -92,10 +92,13 @@ function onClose() {
 <template>
   <div class="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-24 overflow-hidden">
     <div class="absolute inset-0 z-0">
-      <img
+      <NuxtImg
         src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop"
-        alt="Hero background"
+        alt="Booking confirmed background"
         class="w-full h-full object-cover"
+        width="2070"
+        height="1380"
+        loading="lazy"
       />
       <div class="absolute inset-0 bg-gradient-to-r from-[#0C354D]/70 to-[#0C354D]/50" />
     </div>

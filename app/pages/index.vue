@@ -125,10 +125,15 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div class="absolute inset-0 z-0">
-        <img
+        <NuxtImg
           src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop"
-          alt="Hero background"
+          alt="Kenya relocation advisory hero - professional workspace"
           class="w-full h-full object-cover"
+          width="2070"
+          height="1380"
+          loading="eager"
+          fetchpriority="high"
+          preload
         />
         <div class="absolute inset-0 bg-gradient-to-r from-[#0C354D]/70 to-[#0C354D]/50" />
       </div>

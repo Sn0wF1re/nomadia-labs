@@ -51,10 +51,13 @@ watch(open, (isOpen) => {
 <template>
   <div class="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-24 overflow-hidden bg-payment-failed-brand">
     <div class="absolute inset-0 z-0">
-      <img
+      <NuxtImg
         src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?q=80&w=2070&auto=format&fit=crop"
         alt="Payment failed background"
         class="w-full h-full object-cover"
+        width="2070"
+        height="1380"
+        loading="lazy"
       />
       <div class="absolute inset-0 bg-gradient-to-r from-[#1B263B]/80 to-[#249794]/60" />
     </div>
