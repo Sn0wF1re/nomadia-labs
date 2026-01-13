@@ -25,6 +25,10 @@ export default defineNuxtConfig({
      */
     componentDir: '@/components/ui'
   },
+  image: {
+    domains: ['images.unsplash.com'],
+    format: ['webp', 'avif'],
+  },
   site: {
     url: 'https://nomadialabs.com',
     name: 'Nomadia',
