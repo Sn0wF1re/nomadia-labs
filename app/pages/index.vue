@@ -211,7 +211,7 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
         :transition="{ duration: 0.8, delay: 0.2 }"
       >
         <h1 class="text-5xl md:text-7xl mb-6 leading-tight text-white font-playfair">
-          Relocate from Kenya with Confidence. Settle Abroad Seamlessly.
+          Relocate with Confidence. Settle Abroad Seamlessly.
         </h1>
         <p class="text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-inter">
           Nomadia provides expert relocation guidance for Kenyans moving to Finland, UK, Germany, China & Europe. From Kenya to your new home.
