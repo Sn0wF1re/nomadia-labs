@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router'
 import { useMediaQuery } from '@vueuse/core'
-import { ref, computed, onMounted } from 'vue'
 import {
   Dialog,
   DialogContent,

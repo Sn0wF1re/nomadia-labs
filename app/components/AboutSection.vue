@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Motion } from 'motion-v'
 import { Globe } from 'lucide-vue-next'
 </script>
 <template>

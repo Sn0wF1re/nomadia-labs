@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { Motion } from 'motion-v'
-
 // SEO Meta
 useSeoMeta({
   title: 'Nomadia Labs | Kenya Relocation Advisory | Move to Finland, UK, Germany, China & Europe',

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Motion } from 'motion-v'
 </script>
 <template>
   <section id="contact" class="py-24 px-6 bg-off-white relative">

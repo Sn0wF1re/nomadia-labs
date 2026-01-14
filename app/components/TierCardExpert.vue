@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Motion } from 'motion-v';
 const props = defineProps<{ disabled?: boolean }>()
 const emit = defineEmits(['start'])
 </script>

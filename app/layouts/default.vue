@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { Motion } from 'motion-v'
-import { ref, onMounted, onUnmounted } from 'vue'
 const scrolled = ref(false)
 const handleScroll = () => {
   scrolled.value = window.scrollY > 50
