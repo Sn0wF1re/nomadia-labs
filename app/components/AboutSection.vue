@@ -2,7 +2,7 @@
 import { Globe } from 'lucide-vue-next'
 </script>
 <template>
-  <section id="about" class="py-24 px-6 bg-off-white relative">
+  <section id="about" class="py-24 px-6 bg-off-white relative overflow-x-hidden">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-0.5 bg-sand-gold" />
     <div class="max-w-7xl mx-auto">
       <Motion as="h2"

@@ -188,7 +188,7 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
 </script>
 
 <template>
-  <div class="w-full min-h-screen bg-off-white">
+  <div class="w-full min-h-screen bg-off-white overflow-x-hidden">
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div class="absolute inset-0 z-0">
@@ -220,7 +220,7 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
     </section>
 
     <!-- Advisory Tiers Section -->
-    <section id="tiers" class="py-24 px-6 bg-off-white relative">
+    <section id="tiers" class="py-24 px-6 bg-off-white relative overflow-x-hidden">
       <div class="absolute top-15 left-1/2 -translate-x-1/2 w-24 h-0.5 bg-sand-gold" />
       <div class="max-w-7xl mx-auto">
         <Motion as="div"
