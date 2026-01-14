@@ -1,21 +1,13 @@
+/* Base imports */
+@import "tailwindcss";
+@import "tw-animate-css";
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
 
 /* This is Tailwind 4 CSS file */
 /* Extending Tailwind configuration */
 /* Use shadcn/ui format to extend the configuration */
 /* Add only the styles that your component needs */
-
-/* Prevent horizontal scroll on mobile while preserving sticky */
-html,
-body {
-  overflow-x: hidden;
-}
-
-/* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
-
-/* Base imports */
-@import "tailwindcss";
-@import "tw-animate-css";
 
 /* Custom dark variant for targeting dark mode elements */
 @custom-variant dark (&:is(.dark *));
