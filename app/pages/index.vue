@@ -188,7 +188,7 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
 </script>
 
 <template>
-  <div class="w-full min-h-screen bg-off-white overflow-x-hidden">
+  <div class="w-full min-h-screen bg-off-white">
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div class="absolute inset-0 z-0">
