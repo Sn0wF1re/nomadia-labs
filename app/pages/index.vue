@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Motion } from 'motion-v'
 
 // SEO Meta
 useSeoMeta({
-  title: 'Nomadia | Kenya Relocation Advisory | Move to Finland, UK, Germany, China & Europe',
+  title: 'Nomadia Labs | Kenya Relocation Advisory | Move to Finland, UK, Germany, China & Europe',
   description: 'Expert relocation guidance for Kenyans moving abroad. From Nairobi to Finland, UK, Germany, China & Europe. Visa support, pre-departure planning, and settlement assistance for individuals, families & professionals.',
-  keywords: 'relocate from Kenya, Kenya to Finland, Kenya to UK, Kenya to Germany, Kenya to China, Kenya to Europe, emigration from Kenya, Kenyan diaspora, international relocation Nairobi, Kenya relocation consultant, move abroad from Kenya, Kenyan professionals abroad, visa guidance Kenya, expat advisory Kenya',
+  keywords: 'relocate from Kenya, Kenya to Finland, Kenya to UK, Kenya to Germany, Kenya to China, Kenya to Europe, emigration from Kenya, Kenyan diaspora, international relocation Nairobi, Kenya relocation consultant, move abroad from Kenya, Kenyan professionals abroad, visa guidance Kenya, expat advisory Kenya, Nomadia, Nomadia Labs, Nomadia Kenya, Nomadia Labs Kenya, relocation, relocating',
   ogTitle: 'Nomadia | Kenya Relocation Advisory | Move to Finland, UK, Germany & Europe',
   ogDescription: 'Expert relocation guidance for Kenyans moving to Finland, UK, Germany, China & Europe. Visa support, destination planning, and settlement assistance.',
   ogImage: '/og-image.png',
@@ -26,10 +25,11 @@ useHead({
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'Organization',
-        name: 'Nomadia',
+        name: 'Nomadia Labs',
+        alternateName: ['Nomadia Labs Kenya', 'Nomadia Kenya', 'Nomadia'],
         url: 'https://nomadialabs.com',
-        logo: 'https://nomadialabs.com/logo.png',
-        description: 'Expert relocation advisory for Kenyans moving to Finland, UK, Germany, China & Europe. Visa guidance, destination planning, and settlement support.',
+        logo: 'https://nomadialabs.com/nomadia-logo.png',
+        description: 'Kenya\'s premier relocation advisory helping Kenyans relocate to Finland, UK, Germany, China and Europe with expert guidance, visa guidance, and settlement assistance.',
         areaServed: [
           { '@type': 'Country', name: 'Kenya' },
           { '@type': 'Country', name: 'Finland' },
@@ -92,6 +92,75 @@ useHead({
         ],
       }),
     },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'What is Nomadia Labs?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Nomadia Labs is Kenya\'s premier relocation advisory service, helping individuals, families, and professionals relocate from Kenya to destinations including Finland, UK, Germany, China, and other European countries.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'How can Nomadia help me relocate from Kenya?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Nomadia provides expert guidance through three advisory tiers: Clarity Call (15-min focused consultation), Expert Direction (45-min comprehensive session), and Full Support (complete end-to-end relocation assistance including visa support and settlement services).',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Which countries can I relocate to with Nomadia\'s help?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Nomadia specializes in helping Kenyans relocate to Finland, United Kingdom, Germany, China, and other European destinations including France, Netherlands, Sweden, Norway, and Denmark.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'How much does relocation advisory cost at Nomadia?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Nomadia offers three pricing tiers: Clarity Call at 5,000 KES for a 30-minute consultation, Expert Direction at 25,000 KES for a 60-minute session, and Full Support with custom pricing based on your relocation needs.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Is Nomadia based in Nairobi, Kenya?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes, Nomadia Labs is based in Nairobi, Kenya. Our consultants live and work in multiple countries worldwide. We serve Kenyans across the country who are planning to relocate abroad.',
+            },
+          },
+        ],
+      }),
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        '@id': 'https://nomadialabs.com/#website',
+        url: 'https://nomadialabs.com',
+        name: 'Nomadia Labs',
+        alternateName: ['Nomadia', 'Nomadia Kenya'],
+        description: 'Kenya\'s premier relocation advisory for moving abroad',
+        publisher: {
+          '@id': 'https://nomadialabs.com/#organization',
+        },
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: 'https://nomadialabs.com/?s={search_term_string}',
+          'query-input': 'required name=search_term_string',
+        },
+      }),
+    }, 
   ],
 })
 
