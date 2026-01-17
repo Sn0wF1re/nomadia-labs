@@ -76,4 +76,7 @@ export default defineNuxtConfig({
       scrollBehaviorType: 'smooth',
     }
   },
+  runtimeConfig: {
+    intasendPublishableKey: process.env.INTASEND_PUBLISHABLE_KEY || '',
+  }
 })
