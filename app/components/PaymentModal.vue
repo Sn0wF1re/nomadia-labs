@@ -96,7 +96,16 @@ function pollStatus(trackingId: string) {
         clearInterval(interval)
         loading.value = false
         isOpen.value = false
-        navigateTo('/success') // Redirect to your success.vue
+        navigateTo({
+          path: '/success',
+          query: {
+            name: name.value,
+            email: email.value,
+            phone: phone.value,
+            tier: props.tier,
+            questions: JSON.stringify(questions.value)
+          }
+        }) // Redirect to your success.vue with user data and questions
       } else if (data.invoice.state === 'FAILED') {
         clearInterval(interval)
         loading.value = false
