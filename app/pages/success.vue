@@ -24,11 +24,24 @@ useSeoMeta({
 const open = ref(true)
 const route = useRoute()
 const router = useRouter()
+
 const name = computed(() => route.query.name as string || '')
 const email = computed(() => route.query.email as string || '')
 const phone = computed(() => route.query.phone as string || '')
 const tier = computed(() => route.query.tier as string || 'clarity')
 const isPremium = computed(() => tier.value === 'full-support')
+
+// Parse questions from query (JSON stringified array)
+const questions = computed(() => {
+  try {
+    if (typeof route.query.questions === 'string') {
+      return JSON.parse(route.query.questions)
+    }
+    return []
+  } catch {
+    return []
+  }
+})
 
 const calSlug = computed(() => tier.value === 'expert' ? 'expert' : 'clarity')
 const calNamespace = computed(() => `cal-success-${calSlug.value}`)
@@ -62,6 +75,20 @@ onMounted(() => {
   const script = document.createElement('script')
   script.id = 'cal-embed-script'
   script.type = 'text/javascript'
+  // Build prefill object, including questions if present
+  // Build notes string with phone, tier, and questions
+  const notesArr = [
+    `Phone: ${phone.value}`,
+    `Tier: ${tier.value}`,
+    ...(questions.value && Array.isArray(questions.value)
+      ? questions.value.map((q, i) => `Q${i + 1}: ${q}`)
+      : [])
+  ]
+  const prefill = {
+    name: name.value,
+    email: email.value,
+    notes: notesArr.join('\n')
+  }
   script.innerHTML = `
     (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
     Cal("init", "${calNamespace.value}", {origin:"https://app.cal.com"});
@@ -70,11 +97,7 @@ onMounted(() => {
       elementOrSelector: "#${calDivId.value}",
       config: {"layout":"month_view"},
       calLink: "loki-lucky-hw9pzx/${calSlug.value}",
-      prefill: {
-        name: "${name.value}",
-        email: "${email.value}",
-        phone: "${phone.value}"
-      }
+      prefill: ${JSON.stringify(prefill)}
     });
     Cal.ns["${calNamespace.value}"]( "ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#c5a059"}, "dark":{"cal-brand":"#c5a059"}},"hideEventTypeDetails":true,"layout":"month_view"});
   `
