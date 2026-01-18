@@ -4,6 +4,7 @@ export default defineEventHandler(async (event) => {
   
   const body = await readBody(event)
   const config = useRuntimeConfig()
+  console.log('Intasend Publishable Key:', config.intasendPublishableKey) // Debugging line
   const requestHeaders = {
     "Content-Type": "application/json",
     "X-IntaSend-Public-API-Key": config.intasendPublishableKey
@@ -17,6 +18,8 @@ export default defineEventHandler(async (event) => {
     })
     return data
   } catch (error) {
+    // Log error for debugging
+    console.error('IntaSend API error:', error)
     throw createError({
       statusCode: 500,
       statusMessage: 'Intasend Request Failed',
