@@ -21,8 +21,25 @@ useSeoMeta({
   robots: 'noindex, nofollow', // Don't index error pages
 })
 
+
 const router = useRouter()
+const route = useRoute()
 const open = ref(true)
+
+const reason = computed(() => {
+  const raw = route.query.reason as string || 'Unknown error'
+  // If the error is technical, show a general message
+  if (
+    raw.toLowerCase().includes('intasend') ||
+    raw.toLowerCase().includes('500') ||
+    raw.toLowerCase().includes('network') ||
+    raw.toLowerCase().includes('fetch')
+  ) {
+    return 'A technical error occurred while processing your payment. Please try again.'
+  }
+  // Otherwise, show the actual reason
+  return raw
+})
 
 const isDesktop = useMediaQuery('(min-width: 640px)')
 
@@ -33,6 +50,7 @@ const Modal = computed(() => ({
   Title: isDesktop.value ? DialogTitle : DrawerTitle,
   Description: isDesktop.value ? DialogDescription : DrawerDescription,
 }))
+
 
 const handleRetry = () => {
   router.push('/')
@@ -79,8 +97,11 @@ watch(open, (isOpen) => {
             <circle cx="32" cy="32" r="28" fill="#C5A059" fill-opacity="0.18"/>
             <path d="M22 22L42 42M42 22L22 42" stroke="#E53E3E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <p class="text-sm md:text-base text-gray-700 font-inter mb-6 md:mb-8">Please check your payment details and try again. If you need help, contact us at <a href="mailto:advisory@nomadialabs.com" class="text-sand-gold underline">advisory@nomadialabs.com</a></p>
-          <button @click="handleRetry" class="mt-4 px-6 py-2 rounded-lg bg-sand-gold text-white font-bold shadow hover:bg-sand-gold/80 transition">Try Again</button>
+          <p class="text-sm md:text-base text-gray-700 font-inter mb-2">{{ reason }}</p>
+          <p class="text-sm md:text-base text-gray-700 font-inter mb-6 md:mb-8">If you need help, contact us at <a href="mailto:advisory@nomadialabs.com" class="text-sand-gold underline">advisory@nomadialabs.com</a></p>
+          <div class="flex flex-col gap-2 items-center justify-center mt-4">
+            <button @click="handleRetry" class="px-6 py-2 rounded-lg bg-sand-gold text-white font-bold shadow hover:bg-sand-gold/80 transition">Try Again</button>
+          </div>
         </div>
       </component>
     </component>

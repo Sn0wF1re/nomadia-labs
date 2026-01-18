@@ -80,10 +80,26 @@ async function handlePay() {
     if (res?.invoice?.state === 'PENDING') {
       // Use the 'id' from the root of the response, not 'invoice.id
       pollStatus(res.id!)
+    } else {
+      // If IntaSend responds but not pending, treat as failure
+      loading.value = false
+      navigateTo({
+        path: '/payment-failed',
+        query: {
+          reason: res?.invoice?.state || 'Unknown error'
+        }
+      })
     }
-  } catch (e) {
-    alert('Failed to initiate payment')
+  } catch (e: any) {
     loading.value = false
+    // Redirect to payment-failed with error reason
+    navigateTo({
+      path: '/payment-failed',
+      query: {
+        reason: e?.message || 'Failed to initiate payment'
+      }
+    })
+  }
 }
 
 function pollStatus(trackingId: string) {
@@ -109,7 +125,12 @@ function pollStatus(trackingId: string) {
       } else if (data.invoice.state === 'FAILED') {
         clearInterval(interval)
         loading.value = false
-        navigateTo('/payment-failed') // Redirect to your payment-failed.vue
+        navigateTo({
+          path: '/payment-failed',
+          query: {
+            reason: data?.invoice?.state || 'Payment failed'
+          }
+        }) // Redirect to your payment-failed.vue with reason
       }
     } catch (err) {
       console.error('Status check failed', err)
