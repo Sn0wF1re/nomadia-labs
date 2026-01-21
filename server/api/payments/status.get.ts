@@ -11,8 +11,9 @@ export default defineEventHandler(async (event) => {
     const data = await $fetch(`https://api.intasend.com/api/v1/payment/status/`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'X-IntaSend-Public-API-Key': config.intasendPublishableKey,
+        accept: 'application/json',
+        'content-type': 'application/json',
+        authorization: `Bearer ${config.intasendKey}`,
       },
       body: { invoice_id: id }
     })

@@ -25,25 +25,54 @@ const open = ref(true)
 const route = useRoute()
 const router = useRouter()
 
-const name = computed(() => route.query.name as string || '')
-const email = computed(() => route.query.email as string || '')
-const phone = computed(() => route.query.phone as string || '')
-const tier = computed(() => route.query.tier as string || 'clarity')
-const isPremium = computed(() => tier.value === 'full-support')
 
-// Parse questions from query (JSON stringified array)
-const questions = computed(() => {
-  try {
-    if (typeof route.query.questions === 'string') {
-      return JSON.parse(route.query.questions)
-    }
-    return []
-  } catch {
-    return []
+
+let bookingInfo = {
+  name: '',
+  email: '',
+  phone: '',
+  tier: '',
+  q1: '',
+  q2: '',
+  q3: ''
+}
+
+if (import.meta.client) {
+  const raw = sessionStorage.getItem('bookingSuccessInfo')
+  if (raw) {
+    try {
+      const parsed = JSON.parse(raw)
+      bookingInfo = {
+        name: parsed.name || '',
+        email: parsed.email || '',
+        phone: parsed.phone || '',
+        tier: parsed.tier ?? '',
+        q1: parsed.q1 || '',
+        q2: parsed.q2 || '',
+        q3: parsed.q3 || ''
+      }
+    } catch {}
   }
+}
+
+const name = computed(() => bookingInfo.name)
+const email = computed(() => bookingInfo.email)
+const phone = computed(() => bookingInfo.phone)
+const tier = computed(() => bookingInfo.tier)
+const q1 = computed(() => bookingInfo.q1)
+const q2 = computed(() => bookingInfo.q2)
+const q3 = computed(() => bookingInfo.q3)
+const isPremium = computed(() => {
+  // If you add a 'full-support' tier, update this logic
+  return tier.value === 'full-support'
 })
 
-const calSlug = computed(() => tier.value === 'expert' ? 'expert' : 'clarity')
+// Normalize tier to string for calSlug
+const calSlug = computed(() => {
+  if (tier.value === 'expert') return 'expert'
+  // fallback to clarity for 'clarity' or anything else
+  return 'clarity'
+})
 const calNamespace = computed(() => `cal-success-${calSlug.value}`)
 const calDivId = computed(() => `my-cal-inline-${calSlug.value}`)
 
@@ -71,33 +100,29 @@ onMounted(() => {
   const prev = document.getElementById('cal-embed-script')
   if (prev) prev.remove()
 
+  // Build cal.com embed URL with query params for prefill
+  const params = new URLSearchParams({
+    name: name.value,
+    email: email.value,
+    phone: phone.value,
+    q1: q1.value,
+    q2: q2.value,
+    q3: q3.value
+  })
+  const calLink = `loki-lucky-hw9pzx/${calSlug.value}?${params.toString()}`
+
   // Inject cal.com embed script
   const script = document.createElement('script')
   script.id = 'cal-embed-script'
   script.type = 'text/javascript'
-  // Build prefill object, including questions if present
-  // Build notes string with phone, tier, and questions
-  const notesArr = [
-    `Phone: ${phone.value}`,
-    `Tier: ${tier.value}`,
-    ...(questions.value && Array.isArray(questions.value)
-      ? questions.value.map((q, i) => `Q${i + 1}: ${q}`)
-      : [])
-  ]
-  const prefill = {
-    name: name.value,
-    email: email.value,
-    notes: notesArr.join('\n')
-  }
   script.innerHTML = `
     (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
     Cal("init", "${calNamespace.value}", {origin:"https://app.cal.com"});
-    Cal("preload", { calLink: "loki-lucky-hw9pzx/${calSlug.value}" });
+    Cal("preload", { calLink: "${calLink}" });
     Cal.ns["${calNamespace.value}"]( "inline", {
       elementOrSelector: "#${calDivId.value}",
       config: {"layout":"month_view"},
-      calLink: "loki-lucky-hw9pzx/${calSlug.value}",
-      prefill: ${JSON.stringify(prefill)}
+      calLink: "${calLink}"
     });
     Cal.ns["${calNamespace.value}"]( "ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#c5a059"}, "dark":{"cal-brand":"#c5a059"}},"hideEventTypeDetails":true,"layout":"month_view"});
   `

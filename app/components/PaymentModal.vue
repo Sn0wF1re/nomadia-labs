@@ -44,11 +44,18 @@ const Modal = computed(() => ({
 const name = ref('')
 const email = ref('')
 const phone = ref('')
-const questions = ref(['', '', ''])
+const q1 = ref('')
+const q2 = ref('')
+const q3 = ref('')
 const loading = ref(false)
 
-const amount = computed(() => props.tier === 1 ? 5000 : 25000)
-const tierLabel = computed(() => props.tier === 1 ? 'Clarity Session' : 'Expert Session')
+const tierString = computed(() => {
+  if (props.tier === 1) return 'clarity'
+  if (props.tier === 2) return 'expert'
+  return ''
+})
+const amount = computed(() => tierString.value === 'clarity' ? 5 : 25)
+const tierLabel = computed(() => tierString.value === 'clarity' ? 'Clarity Session' : 'Expert Session')
 
 interface MpesaResponse {
   id?: string
@@ -63,14 +70,12 @@ async function handlePay() {
   loading.value = true
   try {
     const payload = {
-      amount: amount.value,
+      amount: JSON.stringify(amount.value),
       phone_number: phone.value,
       api_ref: `NOMADIA-${props.tier}-${Date.now()}`,
-      mobile_tarrif: 'BUSINESS-PAYS',
-      name: name.value,
+      mobile_tarrif: 'CUSTOMER-PAYS',
+      first_name: name.value,
       email: email.value,
-      questions: questions.value,
-      tier: props.tier,
     }
     const res = await $fetch<MpesaResponse>('/api/payments/mpesa', {
       method: 'POST',
@@ -78,27 +83,23 @@ async function handlePay() {
     })
 
     if (res?.invoice?.state === 'PENDING') {
-      // Use the 'id' from the root of the response, not 'invoice.id
-      pollStatus(res.id!)
+      // Use the invoice_id from the response for status polling
+      pollStatus(res.invoice?.invoice_id)
     } else {
       // If IntaSend responds but not pending, treat as failure
       loading.value = false
-      navigateTo({
-        path: '/payment-failed',
-        query: {
-          reason: res?.invoice?.state || 'Unknown error'
-        }
-      })
+      if (import.meta.client) {
+        sessionStorage.setItem('paymentFailedReason', res?.invoice?.state || 'Unknown error')
+      }
+      navigateTo('/payment-failed')
     }
   } catch (e: any) {
     loading.value = false
     // Redirect to payment-failed with error reason
-    navigateTo({
-      path: '/payment-failed',
-      query: {
-        reason: e?.message || 'Failed to initiate payment'
-      }
-    })
+    if (import.meta.client) {
+      sessionStorage.setItem('paymentFailedReason', e?.message || 'Failed to initiate payment')
+    }
+    navigateTo('/payment-failed')
   }
 }
 
@@ -112,25 +113,25 @@ function pollStatus(trackingId: string) {
         clearInterval(interval)
         loading.value = false
         isOpen.value = false
-        navigateTo({
-          path: '/success',
-          query: {
+        if (import.meta.client) {
+          sessionStorage.setItem('bookingSuccessInfo', JSON.stringify({
             name: name.value,
             email: email.value,
             phone: phone.value,
-            tier: props.tier,
-            questions: JSON.stringify(questions.value)
-          }
-        }) // Redirect to your success.vue with user data and questions
+            tier: tierString.value,
+            q1: q1.value,
+            q2: q2.value,
+            q3: q3.value
+          }))
+        }
+        navigateTo('/success') // Redirect to your success.vue with user data and questions
       } else if (data.invoice.state === 'FAILED') {
         clearInterval(interval)
         loading.value = false
-        navigateTo({
-          path: '/payment-failed',
-          query: {
-            reason: data?.invoice?.state || 'Payment failed'
-          }
-        }) // Redirect to your payment-failed.vue with reason
+        if (import.meta.client) {
+          sessionStorage.setItem('paymentFailedReason', data?.invoice?.state || 'Payment failed')
+        }
+        navigateTo('/payment-failed') // Redirect to your payment-failed.vue with reason
       }
     } catch (err) {
       console.error('Status check failed', err)
@@ -168,9 +169,9 @@ function pollStatus(trackingId: string) {
         <div>
           <Label class="block text-xs font-montserrat mb-1">Mandatory Questions</Label>
           <div class="space-y-2">
-            <Input v-model="questions[0]" placeholder="Question 1" required />
-            <Input v-model="questions[1]" placeholder="Question 2" required />
-            <Input v-model="questions[2]" placeholder="Question 3" required />
+            <Input v-model="q1" placeholder="Question 1" required />
+            <Input v-model="q2" placeholder="Question 2" required />
+            <Input v-model="q3" placeholder="Question 3" required />
           </div>
         </div>
         <component :is="Modal.Footer">

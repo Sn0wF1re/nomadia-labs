@@ -4,17 +4,18 @@ export default defineEventHandler(async (event) => {
   
   const body = await readBody(event)
   const config = useRuntimeConfig()
-  console.log('Intasend Publishable Key:', config.intasendPublishableKey) // Debugging line
+  
   const requestHeaders = {
-    "Content-Type": "application/json",
-    "X-IntaSend-Public-API-Key": config.intasendPublishableKey
+    accept: "application/json",
+    "content-type": "application/json",
+    authorization: `Bearer ${config.intasendKey}`
   }
 
   try {
     const data = await $fetch(API_URL, {
       method: "POST",
       headers: requestHeaders,
-      body
+      body: JSON.stringify(body)
     })
     return data
   } catch (error) {
