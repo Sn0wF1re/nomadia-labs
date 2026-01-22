@@ -141,11 +141,17 @@ function pollStatus(trackingId: string) {
 </script>
 
 <template>
-  <component :is="Modal.Root" v-model:open="isOpen">
+  <component
+    :is="Modal.Root"
+    v-model:open="isOpen"
+    v-bind="Modal.Root === Drawer ? { dismissible: false } : {}"
+  >
     <component
       :is="Modal.Content"
       class="bg-off-white rounded-lg shadow-xl w-full sm:max-w-lg border border-sand-gold"
       :class="[{ 'px-4 pb-8 pt-6': !isDesktop, 'p-8': isDesktop }]"
+      @pointerDownOutside.prevent
+      @escapeKeyDown.prevent
     >
       <component :is="Modal.Header" class="pr-8">
         <component :is="Modal.Title" class="text-2xl font-bold mb-2 text-midnight-blue font-playfair">Start Your Journey</component>

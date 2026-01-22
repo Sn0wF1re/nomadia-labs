@@ -77,11 +77,16 @@ watch(open, (isOpen) => {
       />
       <div class="absolute inset-0 bg-gradient-to-r from-[#1B263B]/80 to-[#249794]/60" />
     </div>
-    <component :is="Modal.Root" v-model:open="open">
+    <component
+      :is="Modal.Root"
+      v-model:open="open"
+    >
       <component
         :is="Modal.Content"
         class="sm:max-w-lg"
         :class="[{ 'px-2 pb-8 *:px-4': !isDesktop }]"
+        @pointerDownOutside.prevent
+        @escapeKeyDown.prevent
       >
         <component :is="Modal.Header">
           <component :is="Modal.Title" class="text-2xl md:text-3xl font-bold text-red-600 font-playfair text-center">
