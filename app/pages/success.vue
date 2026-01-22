@@ -180,7 +180,7 @@ function onClose() {
         @escapeKeyDown.prevent
       >
         <div
-          class="w-full bg-white/90 rounded-xl p-4 md:p-8 text-center backdrop-blur-md z-10 mx-auto"
+          class="w-full bg-white/90 rounded-xl p-4 md:p-8 text-center backdrop-blur-md z-10 mx-auto overflow-y-auto max-h-screen"
           :class="{
             'border-2 border-sand-gold': isPremium,
           }"
