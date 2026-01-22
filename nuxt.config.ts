@@ -78,6 +78,6 @@ export default defineNuxtConfig({
     }
   },
   runtimeConfig: {
-    intasendKey: process.env.TEST_KEY || '',
+    intasendKey: process.env.INTASEND_KEY || '',
   }
 })
