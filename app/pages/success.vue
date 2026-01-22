@@ -52,6 +52,7 @@ if (import.meta.client) {
         q2: parsed.q2 || '',
         q3: parsed.q3 || ''
       }
+      sessionStorage.removeItem('bookingSuccessInfo')
     } catch {}
   }
 }
@@ -112,7 +113,7 @@ onMounted(() => {
   })
   const calLink = `loki-lucky-hw9pzx/${calSlug.value}?${params.toString()}`
 
-  // Inject cal.com embed script
+  // Inject cal.com embed script and register booking callback inside the embed
   const script = document.createElement('script')
   script.id = 'cal-embed-script'
   script.type = 'text/javascript'
@@ -126,20 +127,24 @@ onMounted(() => {
       calLink: "${calLink}"
     });
     Cal.ns["${calNamespace.value}"]( "ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#c5a059"}, "dark":{"cal-brand":"#c5a059"}},"hideEventTypeDetails":true,"layout":"month_view"});
+    Cal.ns["${calNamespace.value}"]( "on", {
+      action: "bookingSuccessfulV2",
+      callback: function(data) {
+        window.postMessage({ calBookingComplete: true }, "*");
+      }
+    });
   `
   document.body.appendChild(script)
 
-  // Listen for Cal.com booking complete event
-  function handleCalMessage(event: MessageEvent) {
-    // Cal.com sends event.data.event === 'bookingSuccessful' on booking
-    if (event?.data?.event === 'bookingSuccessful') {
+  // Listen for booking complete event from embed script
+  function handleCalBookingComplete(event: MessageEvent) {
+    if (event?.data?.calBookingComplete) {
       bookingComplete.value = true
     }
   }
-  window.addEventListener('message', handleCalMessage)
-  // Clean up
+  window.addEventListener('message', handleCalBookingComplete)
   onUnmounted(() => {
-    window.removeEventListener('message', handleCalMessage)
+    window.removeEventListener('message', handleCalBookingComplete)
   })
 })
 
@@ -169,25 +174,25 @@ function onClose() {
     >
       <component
         :is="Modal.Content"
-        class="sm:max-w-lg"
+        class="sm:max-w-lg max-h-screen overflow-y-auto"
         :class="[{ 'px-2 pb-8 *:px-4': !isDesktop }]"
         @pointerDownOutside.prevent
         @escapeKeyDown.prevent
       >
-        <component :is="Modal.Header">
-          <component :is="Modal.Title" class="text-2xl md:text-3xl font-bold text-midnight-blue font-playfair text-center">
-            Payment Successful!
-          </component>
-          <component :is="Modal.Description" class="text-base text-sand-gold font-montserrat text-center">
-            Thank you for booking your session with Nomadia.
-          </component>
-        </component>
         <div
           class="w-full bg-white/90 rounded-xl p-4 md:p-8 text-center backdrop-blur-md z-10 mx-auto"
           :class="{
             'border-2 border-sand-gold': isPremium,
           }"
         >
+          <template v-if="!bookingComplete">
+            <component :is="Modal.Title" class="text-2xl md:text-3xl font-bold text-midnight-blue font-playfair text-center mb-2">
+              Payment Successful!
+            </component>
+            <component :is="Modal.Description" class="text-base text-sand-gold font-montserrat text-center mb-4">
+              Thank you for booking your session with Nomadia.
+            </component>
+          </template>
           <Motion as="div"
             :initial="{ scale: 0, opacity: 0 }"
             :animate="{ scale: 1, opacity: 1 }"
@@ -200,17 +205,12 @@ function onClose() {
               <path d="M20 34L29 43L44 26" stroke="#249794" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </Motion>
-          <p class="text-sm md:text-base text-gray-700 font-inter mb-6 md:mb-8">You're one step closer to clarity. Please schedule your session below.</p>
+          <p v-if="!bookingComplete" class="text-sm md:text-base text-gray-700 font-inter mb-6 md:mb-8">You're one step closer to clarity. Please schedule your session below.</p>
           <div v-if="!bookingComplete" class="w-full flex justify-center">
-            <div :id="calDivId" style="width:100%;height:400px;overflow:scroll"></div>
+            <div :id="calDivId" style="width:100%;height:400px;overflow:auto"></div>
           </div>
           <div v-else class="flex flex-col items-center justify-center py-12">
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto mb-4">
-              <circle cx="32" cy="32" r="32" fill="#249794" fill-opacity="0.15"/>
-              <circle cx="32" cy="32" r="28" fill="#249794" fill-opacity="0.25"/>
-              <path d="M20 34L29 43L44 26" stroke="#249794" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <p class="text-lg font-bold text-midnight-blue mb-2">Booking Complete!</p>
+            <p class="text-lg font-bold font-playfair text-midnight-blue mb-2">Booking Complete!</p>
             <p class="text-base text-gray-700 mb-6">Your session is confirmed. Check your email for details.</p>
             <button @click="router.push('/')" class="px-6 py-2 rounded-lg bg-sand-gold text-white font-bold shadow hover:bg-sand-gold/80 transition">Go Home</button>
           </div>
