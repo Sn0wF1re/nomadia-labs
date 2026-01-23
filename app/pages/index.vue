@@ -245,10 +245,10 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
           <div class="sticky top-16 z-10 transform-gpu px-2 pb-85">
             <TierCardClarity :disabled="showPayment" @start="() => openPayment(1)" class="shadow-lg w-full" />
           </div>
-          <div class="sticky top-16 z-20 transform-gpu px-2 pb-85">
+          <div class="sticky top-[4rem] z-20 transform-gpu px-2 pb-85">
             <TierCardExpert :disabled="showPayment" @start="() => openPayment(2)" class="shadow-xl w-full" />
           </div>
-          <div class="sticky top-16 z-30 transform-gpu px-2">
+          <div class="sticky top-[7.5rem] z-30 transform-gpu px-2">
             <TierCardFullSupport :disabled="showInquiry" @start="() => openInquiry()" class="shadow-2xl w-full" />
           </div>
         </div>
