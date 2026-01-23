@@ -21,6 +21,10 @@ useSeoMeta({
   robots: 'noindex, nofollow', // Don't index transactional pages
 })
 
+definePageMeta({
+  middleware: 'payment-guard',
+})
+
 const open = ref(true)
 const bookingComplete = ref(false)
 const route = useRoute()

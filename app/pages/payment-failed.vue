@@ -21,6 +21,10 @@ useSeoMeta({
   robots: 'noindex, nofollow', // Don't index error pages
 })
 
+definePageMeta({
+  middleware: 'payment-guard',
+})
+
 
 const router = useRouter()
 const route = useRoute()
