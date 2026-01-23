@@ -230,7 +230,8 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
           :in-view-options="{ once: true }"
           :transition="{ duration: 0.6 }"
         >
-          <h2 class="text-4xl md:text-5xl font-semibold text-midnight-blue font-playfair">Advisory Tiers</h2>
+          <h2 class="text-4xl md:text-5xl font-semibold text-midnight-blue font-playfair mb-8">Advisory Tiers</h2>
+          <p class="text-regular font-semibold text-midnight-blue mt-2">To book, simply pick the tier that resonates with your situation.</p>
           <p class="text-sm font-regular text-sand-gold mt-2">*All advisory sessions include written notes shared within 48 hours.</p>
         </Motion>
         <!-- Desktop: Grid layout -->
