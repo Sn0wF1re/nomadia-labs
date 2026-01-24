@@ -54,7 +54,7 @@ const tierString = computed(() => {
   if (props.tier === 2) return 'expert'
   return ''
 })
-const amount = computed(() => tierString.value === 'clarity' ? 5 : 25)
+const amount = computed(() => tierString.value === 'clarity' ? 5000 : 25000)
 const tierLabel = computed(() => tierString.value === 'clarity' ? 'Clarity Session' : 'Expert Session')
 
 interface MpesaResponse {
