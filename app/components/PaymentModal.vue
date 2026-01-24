@@ -70,12 +70,10 @@ async function handlePay() {
   loading.value = true
   try {
     const payload = {
-      amount: JSON.stringify(amount.value),
       phone_number: phone.value,
-      api_ref: `NOMADIA-${props.tier}-${Date.now()}`,
-      mobile_tarrif: 'CUSTOMER-PAYS',
       first_name: name.value,
       email: email.value,
+      tier: props.tier,
     }
     const res = await $fetch<MpesaResponse>('/api/payments/mpesa', {
       method: 'POST',
