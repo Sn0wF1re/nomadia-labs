@@ -14,7 +14,7 @@ const year = new Date().getFullYear()
 </script>
 
 <template>
-  <div class="overflow-x-clip">
+  <div class="overflow-x-clip w-full min-h-screen bg-off-white">
     <!-- Navigation -->
     <Motion as=nav
       class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
