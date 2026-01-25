@@ -53,7 +53,7 @@ import { Globe } from 'lucide-vue-next'
         :transition="{ duration: 0.6 }"
       >
         <div class="flex flex-col items-center mb-8">
-          <Globe class="w-10 h-10 text-midnight-blue mb-2" />
+          <Globe class="w-10 h-10 text-sand-gold mb-2" />
           <h3 class="text-3xl font-semibold text-center text-midnight-blue font-playfair">Our Global Perspective</h3>
         </div>
         <div class="bg-sand-gold-light/20 p-8 rounded-sm border border-sand-gold/30 max-w-3xl mx-auto">
