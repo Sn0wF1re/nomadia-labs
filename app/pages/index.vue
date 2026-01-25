@@ -237,7 +237,7 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
         <p class="text-gray mt-2">Our advisory services support Kenyans travelling an relocating internationally,
           including but not limited to destinations in: North America (United States, Canada),
           Europe (United Kingdom, Finland, Germany, and other EU/Schengen countries),
-          an Asia (China, Malaysia, Singapore). 
+          and Asia (China, Malaysia, Singapore). 
         </p>
         <p class="text-gray mt-2">To book, simply pick the tier that resonates with your situation.</p>
         <p class="text-sm font-regular text-sand-gold mt-2">*All advisory sessions include written notes shared within 72 hours.</p>
