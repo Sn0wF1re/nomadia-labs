@@ -209,11 +209,16 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
       :animate="{ opacity: 1, y: 0 }"
       :transition="{ duration: 0.8, delay: 0.2 }"
     >
-      <h1 class="text-5xl md:text-7xl mb-6 leading-tight text-white font-playfair">
+      <!-- <h1 class="text-5xl md:text-7xl mb-6 leading-tight text-white font-playfair">
         Relocate with Confidence. Settle Abroad Seamlessly.
+      </h1> -->
+      <h1 class="text-5xl md:text-7xl mb-6 leading-tight text-white font-playfair">
+        International Travel & Relocation Advisory for Kenyans.
       </h1>
       <p class="text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-inter">
-        Nomadia provides expert relocation guidance for Kenyans moving to Finland, UK, Germany, China & Europe. From Kenya to your new home.
+        Nomadia provides professional travel advisory and relocation consulting services
+        for Kenyans planning to travel or move abroad for study, business, medical treatment,
+        or long-term relocation.  
       </p>
     </Motion>
   </section>
@@ -229,7 +234,12 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
         :transition="{ duration: 0.6 }"
       >
         <h2 class="text-4xl md:text-5xl font-semibold text-midnight-blue font-playfair mb-8">Advisory Tiers</h2>
-        <p class="text-regular font-semibold text-midnight-blue mt-2">To book, simply pick the tier that resonates with your situation.</p>
+        <p class="text-gray mt-2">Our advisory services support Kenyans travelling an relocating internationally,
+          including but not limited to destinations in: North America (United States, Canada),
+          Europe (United Kingdom, Finland, Germany, and other EU/Schengen countries),
+          an Asia (China, Malaysia, Singapore). 
+        </p>
+        <p class="text-gray mt-2">To book, simply pick the tier that resonates with your situation.</p>
         <p class="text-sm font-regular text-sand-gold mt-2">*All advisory sessions include written notes shared within 72 hours.</p>
       </Motion>
       <!-- Desktop: Grid layout -->

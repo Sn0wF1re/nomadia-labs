@@ -57,9 +57,13 @@ import { Globe } from 'lucide-vue-next'
           <h3 class="text-3xl font-semibold text-center text-midnight-blue font-playfair">Our Global Perspective</h3>
         </div>
         <div class="bg-sand-gold-light/20 p-8 rounded-sm border border-sand-gold/30 max-w-3xl mx-auto">
-          <p class="text-gray-800 leading-relaxed font-medium font-inter text-center">
+          <!-- <p class="text-gray-800 leading-relaxed font-medium font-inter text-center">
             At Nomadia, our advisors bring a wealth of first-hand experience from living and working across the globe - including Finland, the UK, China, Germany, and the rest of Europe. Our team understands the challenges and opportunities of moving abroad, navigating new cultures, and building a life in unfamiliar places.<br><br>
             Whether you’re seeking guidance on immigration, adapting to a new environment, or making important decisions about your future, we offer advice rooted in diverse backgrounds and real-world journeys. We’re here to help you thrive - wherever you choose to call home.
+          </p> -->
+          <p class="text-gray-800 leading-relaxed font-medium font-inter text-center">
+            Through region-specific consultants and up-to-date guidance on visas, immigration pathways, and relocation planning,
+            we help clients make informed, confident global mobility decisions.
           </p>
         </div>
       </Motion>
