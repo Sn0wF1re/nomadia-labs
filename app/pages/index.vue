@@ -213,7 +213,7 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
         Relocate with Confidence. Settle Abroad Seamlessly.
       </h1> -->
       <h1 class="text-5xl md:text-7xl mb-6 leading-tight text-white font-playfair">
-        International Travel & Relocation Advisory for Kenyans.
+        International Travel & Relocation Advisory.
       </h1>
       <p class="text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-inter">
         Nomadia provides professional travel advisory and relocation consulting services
