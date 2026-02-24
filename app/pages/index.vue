@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // SEO Meta
 useSeoMeta({
-  title: 'Nomadia Labs | Kenya Relocation Advisory | Move to Finland, UK, Germany, China & Europe',
+  title: 'Nomadia Labs | Relocation Advisory | Move to Finland, UK, Germany, China & Europe',
   description: 'Expert relocation guidance for Kenyans moving abroad. From Nairobi to Finland, UK, Germany, China & Europe. Visa support, pre-departure planning, and settlement assistance for individuals, families & professionals.',
   keywords: 'relocate from Kenya, Kenya to Finland, Kenya to UK, Kenya to Germany, Kenya to China, Kenya to Europe, emigration from Kenya, Kenyan diaspora, international relocation Nairobi, Kenya relocation consultant, move abroad from Kenya, Kenyan professionals abroad, visa guidance Kenya, expat advisory Kenya, Nomadia, Nomadia Labs, Nomadia Kenya, Nomadia Labs Kenya, relocation, relocating',
   ogTitle: 'Nomadia | Kenya Relocation Advisory | Move to Finland, UK, Germany & Europe',
@@ -10,8 +10,8 @@ useSeoMeta({
   ogUrl: 'https://nomadialabs.com',
   ogType: 'website',
   twitterCard: 'summary_large_image',
-  twitterTitle: 'Nomadia | Kenya Relocation Advisory | Move Abroad with Confidence',
-  twitterDescription: 'Expert relocation guidance for Kenyans moving to Finland, UK, Germany, China & Europe. From Nairobi to your new home.',
+  twitterTitle: 'Nomadia | Relocation Advisory | Move Abroad with Confidence',
+  twitterDescription: 'Expert relocation guidance when moving to Finland, UK, Germany, China & Europe. From Nairobi to your new home.',
   twitterImage: '/og-image.png',
 })
 
