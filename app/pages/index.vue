@@ -217,8 +217,9 @@ watch([showInquiry, showPayment], ([inquiryOpen, paymentOpen]) => {
       </h1>
       <p class="text-lg md:text-xl text-white/90 max-w-2xl mx-auto font-inter">
         Nomadia provides professional travel advisory and relocation consulting services
-        for Kenyans planning to travel or move abroad for study, business, medical treatment,
-        or long-term relocation.  
+        for Africans seeking job opportunities or planning to study abroad.
+        We also support individuals travelling or relocating for business, medical treatment,
+        or long-term settlement in other countries.
       </p>
     </Motion>
   </section>
